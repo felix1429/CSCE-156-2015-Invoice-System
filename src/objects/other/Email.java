@@ -1,20 +1,22 @@
 package objects.other;
 
-import objects.BaseObject;
+import utils.ObjectUtil;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Email extends BaseObject{
+public class Email {
 
+    public static final String EMAILS_STRING = "emails";
     private static final ArrayList<String> emailFormat = new ArrayList<String>();
+    public ArrayList<String> emailAddresses = new ArrayList<>();
 
     public Email(String emails) {
-        ArrayList<String> emailAddresses = this.parseEmail(emails);
+        this.emailAddresses = this.parseEmail(emails);
     }
 
     private ArrayList<String> parseEmail(String input) {
-        String values[] = splitToTokens(input);
+        String values[] = ObjectUtil.splitToTokens(input);
         ArrayList<String> emails = new ArrayList<String>();
         Collections.addAll(emails, values);
         return emails;

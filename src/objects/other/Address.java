@@ -1,14 +1,16 @@
 package objects.other;
 
+import utils.ObjectUtil;
 
-import objects.BaseObject;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Address extends BaseObject{
+public class Address {
 
+    public JSONObject address = new JSONObject();
+    public static final String ADDRESS_STRING = "address";
     private static final ArrayList<String> addressFormat = new ArrayList<String>() {
         {
             add("street");
@@ -20,11 +22,11 @@ public class Address extends BaseObject{
     };
 
     public Address(String addressStr) {
-        JSONObject address = this.parseAddress(addressStr);
+        this.address = this.parseAddress(addressStr);
     }
 
     private JSONObject parseAddress(String input) {
-        String values[] = splitToTokens(input);
+        String values[] = ObjectUtil.splitToTokens(input);
         JSONObject obj = new JSONObject();
         String output;
         for (int i = 0; i < values.length; i++) {

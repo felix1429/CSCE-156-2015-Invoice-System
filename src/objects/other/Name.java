@@ -1,11 +1,12 @@
 package objects.other;
 
-import objects.BaseObject;
+import utils.ObjectUtil;
 
 import java.util.ArrayList;
 
-public class Name extends BaseObject{
+public class Name {
 
+    public String[][] name;
     private static final ArrayList<String> nameFormat = new ArrayList<String>() {
         {
             add("firstName");
@@ -14,11 +15,11 @@ public class Name extends BaseObject{
     };
 
     public Name(String nameStr) {
-        String[][] name = this.parseName(nameStr);
+        this.name = this.parseName(nameStr);
     }
 
     private String[][] parseName(String input) {
-        String values[] = splitToTokens(input);
+        String values[] = ObjectUtil.splitToTokens(input);
         String[][] nameArray = new String[2][2];
         nameArray[0] = new String[] {"lastName", values[0]};
         nameArray[1] = new String[] {"firstName", values[1].trim()};
