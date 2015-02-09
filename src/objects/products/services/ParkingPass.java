@@ -26,14 +26,13 @@ public class ParkingPass {
     }
 
     private JSONObject parseParkingPass(String[] input) throws JSONException {
-        String token;
-        for(int i = 0; i < input.length; i++) {
+        for(int i = 0; i < input.length - 2; i++) {
             Object object = parkingPassFormat.get(i);
-            token = input[i + 2];
+            String token = input[i + 2];
             if(object instanceof ArrayList) {
                 this.productsJsonObject.put(Venue.VENUE_STRING, ObjectUtil.getVenueDataFromCode(token));
             } else {
-                this.productsJsonObject.put(parkingPassFormat.get(i).toString(), token);
+                this.productsJsonObject.put(object.toString(), token);
             }
         }
         return this.productsJsonObject;

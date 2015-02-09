@@ -10,7 +10,6 @@ public class GameTicket {
 
     public JSONObject gameTicket = new JSONObject();
     public JSONObject productsJsonObject;
-    public static final String TICKET = "ticket";
     public static final String DATE_TIME = "gameDateTime";
     public static final String TEAM_ONE = "team1";
     public static final String TEAM_TWO = "team2";
@@ -31,19 +30,17 @@ public class GameTicket {
         this.productsJsonObject = productsJsonObject;
     }
 
-    public JSONObject parseGameTicket(String[] input) throws JSONException {
-        JSONObject ticket = new JSONObject();
-        for(int i = 0; i < input.length; i++) {
+    private JSONObject parseGameTicket(String[] input) throws JSONException {
+        for(int i = 0; i < input.length - 2; i++) {
             Object object = gameTicketFormat.get(i);
             String token = input[i + 2];
             if(object instanceof ArrayList) {
-                ticket.put(Venue.VENUE_STRING, ObjectUtil.getVenueDataFromCode(token));
+                this.productsJsonObject.put(Venue.VENUE_STRING, ObjectUtil.getVenueDataFromCode(token));
             } else {
-                ticket.put(gameTicketFormat.get(i).toString(), token);
+                this.productsJsonObject.put(object.toString(), token);
             }
         }
-        ObjectUtil.addToTicketCodeMap(input[0], ticket);
-        this.productsJsonObject.put(GameTicket.TICKET, ticket);
-        return ticket;
+        ObjectUtil.addToTicketCodeMap(input[0], this.productsJsonObject);
+        return this.productsJsonObject;
     }
 }

@@ -49,6 +49,7 @@ public class Product extends BaseObject {
                     new GameTicket(lineTokenArray, jsonObject);
                 }
             }
+            JSONArrayList.put(jsonObject);
         }
         return JSONArrayList;
     }
