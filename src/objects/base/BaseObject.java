@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 abstract public class BaseObject {
 
-    protected String lineTokenArray[];
+    protected String[] lineTokenArray;
     protected int numberOfRecords;
     protected String JSONname;
     protected String finalJSONString;

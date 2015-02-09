@@ -1,4 +1,4 @@
-package objects.products.service;
+package objects.products.services;
 
 
 public class PersonalSeatLicense {

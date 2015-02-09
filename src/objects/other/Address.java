@@ -26,24 +26,20 @@ public class Address {
         }
     };
 
-    public Address(String addressStr) {
+    public Address(String addressStr) throws JSONException {
         this.address = this.parseAddress(addressStr);
     }
 
-    private JSONObject parseAddress(String input) {
+    private JSONObject parseAddress(String input) throws JSONException {
         String values[] = ObjectUtil.splitToTokens(input);
         JSONObject obj = new JSONObject();
-        String output;
+        String token;
         for (int i = 0; i < values.length; i++) {
-            output = values[i];
+            token = values[i];
             if (!addressFormat.get(i).equals(Address.STREET_STRING)) {
-                output = output.trim();
+                token = token.trim();
             }
-            try {
-                obj.put(addressFormat.get(i), output);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
+            obj.put(addressFormat.get(i), token);
         }
         return obj;
     }

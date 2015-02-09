@@ -16,6 +16,7 @@ public class Person extends BaseObject {
 
     private String personCode;
     private static final String PERSON_CODE_STRING = "personCode";
+    private static final String JSON_NAME_PERSONS = "persons";
     private static ArrayList<String> name = Name.getNameFormat();
     private static ArrayList<String> address = Address.getAddressFormat();
     private static ArrayList<String> emailAddresses = Email.getEmailFormat();
@@ -31,9 +32,9 @@ public class Person extends BaseObject {
 
     public Person(String filePath) throws IOException, JSONException {
         super(filePath);
-        this.JSONname = "persons";
+        this.JSONname = Person.JSON_NAME_PERSONS;
         this.finalJSON = this.convertToJSON(fileArray);
-        this.finalJSONString = this.finalJSON.toString(2);
+        this.finalJSONString = this.finalJSON.toString(3);
         this.outerJSONObject = createJSONShell(this.JSONname, this.finalJSONString);
     }
 
