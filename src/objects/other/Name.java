@@ -7,12 +7,12 @@ import java.util.ArrayList;
 public class Name {
 
     public String[][] name;
-    private static final String LAST_NAME = "lastName";
-    private static final String FIRST_NAME = "firstName";
+    private static final String LAST_NAME_STRING = "lastName";
+    private static final String FIRST_NAME_STRING = "firstName";
     private static final ArrayList<String> nameFormat = new ArrayList<String>() {
         {
-            add(Name.FIRST_NAME);
-            add(Name.LAST_NAME);
+            add(Name.FIRST_NAME_STRING);
+            add(Name.LAST_NAME_STRING);
         }
     };
 
@@ -23,8 +23,8 @@ public class Name {
     private String[][] parseName(String input) {
         String values[] = ObjectUtil.splitToTokens(input);
         String[][] nameArray = new String[2][2];
-        nameArray[0] = new String[] {Name.LAST_NAME, values[0]};
-        nameArray[1] = new String[] {Name.FIRST_NAME, values[1].trim()};
+        nameArray[0] = new String[] {Name.LAST_NAME_STRING, values[0]};
+        nameArray[1] = new String[] {Name.FIRST_NAME_STRING, values[1].trim()};
         return nameArray;
     }
 
