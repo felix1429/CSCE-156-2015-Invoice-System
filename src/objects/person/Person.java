@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class Person extends BaseObject {
 
-
     private String personCode;
     private static final String PERSON_CODE_STRING = "personCode";
     private static final String JSON_NAME_PERSONS = "persons";

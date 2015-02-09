@@ -1,0 +1,123 @@
+{
+  "venues": [
+    {
+      "address": {
+        "zip": "07073",
+        "street": "1 MetLife Stadium Drive",
+        "state": "NJ",
+        "country": "USA",
+        "city": "East Rutherford"
+      },
+      "name": "Metlife Stadium",
+      "capacity": "82566",
+      "venueCode": "a001"
+    },
+    {
+      "address": {
+        "zip": "76011",
+        "street": "1 AT&T Way",
+        "state": "TX",
+        "country": "USA",
+        "city": "Arlington"
+      },
+      "name": "AT&T Stadium",
+      "capacity": "80000",
+      "venueCode": "ai10"
+    },
+    {
+      "address": {
+        "zip": "64129",
+        "street": "1 Arrowhead Drive",
+        "state": "MO",
+        "country": "USA",
+        "city": "Kansas City"
+      },
+      "name": "Arrowhead Stadium",
+      "capacity": "79541",
+      "venueCode": "ai19"
+    },
+    {
+      "address": {
+        "zip": "33056",
+        "street": "347 Don Shula Dr",
+        "state": "FL",
+        "country": "USA",
+        "city": "Miami Gardens"
+      },
+      "name": "Sun Life Stadium",
+      "capacity": "65326",
+      "venueCode": "fl11"
+    },
+    {
+      "address": {
+        "zip": "28202",
+        "street": "800 South Mint Street",
+        "state": "NC",
+        "country": "USA",
+        "city": "Charlotte"
+      },
+      "name": "Bank of America Stadium",
+      "capacity": "73779",
+      "venueCode": "c102"
+    },
+    {
+      "address": {
+        "zip": "44114",
+        "street": "100 Alfred Lerner Way",
+        "state": "OH",
+        "country": "USA",
+        "city": "Cleveland"
+      },
+      "name": "FirstEnergy Stadium",
+      "capacity": "73204",
+      "venueCode": "st329"
+    },
+    {
+      "address": {
+        "zip": "60605",
+        "street": "1410 Museum Campus Drive",
+        "state": "IL",
+        "country": "USA",
+        "city": "Chicago"
+      },
+      "name": "Soldier Field",
+      "capacity": "61500",
+      "venueCode": "c181"
+    },
+    {
+      "address": {
+        "zip": "98134",
+        "street": "800 Occidental Avenue South",
+        "state": "WA",
+        "country": "USA",
+        "city": "Seattle"
+      },
+      "name": "CenturyLink Field",
+      "capacity": "67135",
+      "venueCode": "w111"
+    },
+    {
+      "address": {
+        "zip": "85305",
+        "street": "1 Cardinals Drive",
+        "state": "AZ",
+        "country": "USA",
+        "city": "Glendale"
+      },
+      "name": "University of Phoenix Stadium",
+      "capacity": "63400",
+      "venueCode": "phx11"
+    },
+    {
+      "address": {
+        "zip": "30313",
+        "street": "1 Georgia Dome Drive Northwest",
+        "state": "GA",
+        "country": "USA",
+        "city": "Atlanta"
+      },
+      "name": "Georgia Dome",
+      "capacity": "71228",
+      "venueCode": "org59"
+    }
+  ]}
