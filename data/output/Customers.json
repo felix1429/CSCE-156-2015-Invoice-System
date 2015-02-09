@@ -1,0 +1,166 @@
+{
+  "customers": [
+    {
+      "address": {
+        "zip": "68588-0115",
+        "street": "259 Concorde Suites",
+        "state": "NE",
+        "country": "USA",
+        "city": "Lincoln"
+      },
+      "primaryContact": {
+        "lastName": "Baker",
+        "personCode": "231",
+        "address": {
+          "zip": "M5V 1J1",
+          "street": "1 Blue Jays Way",
+          "state": "ON",
+          "country": "Canada",
+          "city": "Toronto"
+        },
+        "emails": [
+          "famousdoc@who.com",
+          "tbaker@cse.unl.edu",
+          "mostfamous@whovian.com",
+          "thedoctor@bbc.com"
+        ],
+        "firstName": "Tom"
+      },
+      "name": "Cinco Consultants",
+      "customerCode": "C001",
+      "type": "M"
+    },
+    {
+      "address": {
+        "zip": "10453",
+        "street": "184 Marvel Way",
+        "state": "NY",
+        "country": "USA",
+        "city": "New York"
+      },
+      "primaryContact": {
+        "lastName": "Castro",
+        "personCode": "944c",
+        "address": {
+          "zip": "60613",
+          "street": "1060 West Addison Street",
+          "state": "IL",
+          "country": "USA",
+          "city": "Chicago"
+        },
+        "emails": [
+          "scastro@cubs.com",
+          "starlin_castro13@gmail.com"
+        ],
+        "firstName": "Starlin"
+      },
+      "name": "Stark Associates",
+      "customerCode": "C002",
+      "type": "A"
+    },
+    {
+      "address": {
+        "zip": "90230",
+        "street": "123 Venture Way",
+        "state": "CA",
+        "country": "USA",
+        "city": "Culver City"
+      },
+      "primaryContact": {
+        "lastName": "Sampson",
+        "personCode": "306a",
+        "address": {
+          "zip": "68116",
+          "street": "123 N 1st Street",
+          "state": "NE",
+          "country": "USA",
+          "city": "Omaha"
+        },
+        "emails": [
+          "brock_f_sampson@gmail.com",
+          "bsampson@venture.com"
+        ],
+        "firstName": "Brock"
+      },
+      "name": "Venture Club",
+      "customerCode": "C003",
+      "type": "M"
+    },
+    {
+      "address": {
+        "zip": "20755",
+        "street": "9800 Savage Rd",
+        "state": "MD",
+        "country": "USA",
+        "city": "Fort Meade"
+      },
+      "primaryContact": {
+        "lastName": "Fox",
+        "personCode": "321f",
+        "address": {
+          "zip": "10004",
+          "street": "321 Bronx Street",
+          "state": "NY",
+          "country": "USA",
+          "city": "New York"
+        },
+        "emails": [
+          "bfox@gmail.com",
+          "csheen@crazy.net"
+        ],
+        "firstName": "Bud"
+      },
+      "name": "Mr Steve Odelay",
+      "customerCode": "C004",
+      "type": "N"
+    },
+    {
+      "address": {
+        "zip": "60601",
+        "street": "1060 West Addison",
+        "state": "IL",
+        "country": "USA",
+        "city": "Chicago"
+      },
+      "primaryContact": {
+        "lastName": "Ehrmantraut",
+        "personCode": "bbchar",
+        "address": {
+          "zip": "87105",
+          "street": "800 West 7th Street",
+          "state": "NM",
+          "country": "USA",
+          "city": "Albuquerque"
+        },
+        "firstName": "Kaylee"
+      },
+      "name": "Vandelay Industries",
+      "customerCode": "C005",
+      "type": "N"
+    },
+    {
+      "address": {
+        "zip": "68500",
+        "street": "456 West 7th St.",
+        "state": "NE",
+        "country": "USA",
+        "city": "Omaha"
+      },
+      "primaryContact": {
+        "lastName": "Baker",
+        "personCode": "321dr",
+        "address": {
+          "zip": "68503",
+          "street": "Avery Hall",
+          "state": "NE",
+          "country": "USA",
+          "city": "Lincoln"
+        },
+        "emails": ["dr@baker.com"],
+        "firstName": "C."
+      },
+      "name": "Mr Gregory Smith",
+      "customerCode": "C006",
+      "type": "A"
+    }
+  ]}

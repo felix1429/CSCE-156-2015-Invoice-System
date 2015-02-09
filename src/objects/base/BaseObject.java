@@ -5,7 +5,6 @@ import org.json.JSONArray;
 import utils.ObjectUtil;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,6 +17,7 @@ abstract public class BaseObject {
     protected String finalJSONString;
     protected JSONArray finalJSON;
     protected String value;
+    protected String outerJSONObject;
     protected JSONArray JSONArrayList = new JSONArray();
     protected ArrayList<String[]> fileArray = new ArrayList<>();
 
@@ -41,7 +41,11 @@ abstract public class BaseObject {
         return Integer.parseInt(arr[0]);
     }
 
-    public String getFinalJSONString() {
-        return this.finalJSONString;
+    public String getJSONShell() {
+        return this.outerJSONObject;
+    }
+
+    public String createJSONShell(String JSONName, String finalString) {
+        return "{\n\"" + JSONName + "\": " + finalString + "}";
     }
 }

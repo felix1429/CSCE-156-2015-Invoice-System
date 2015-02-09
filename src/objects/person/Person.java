@@ -33,6 +33,7 @@ public class Person extends BaseObject {
         this.JSONname = "persons";
         this.finalJSON = this.convertToJSON(fileArray);
         this.finalJSONString = this.finalJSON.toString(2);
+        this.outerJSONObject = createJSONShell(this.JSONname, this.finalJSONString);
     }
 
     private JSONArray convertToJSON(ArrayList<String[]> fileArray) throws JSONException {
