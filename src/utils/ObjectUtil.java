@@ -11,6 +11,7 @@ public class ObjectUtil {
     private static HashMap<String, JSONObject> customerCodeMap = new HashMap<String, JSONObject>();
     private static HashMap<String, JSONObject> productCodeMap = new HashMap<String, JSONObject>();
     private static HashMap<String, JSONObject> venueCodeMap = new HashMap<String, JSONObject>();
+    private static HashMap<String, JSONObject> ticketCodeMap = new HashMap<String, JSONObject>();
 
     //convert an element line of a data file into an array
     public static String[] splitToTokens(String list) {
@@ -20,12 +21,6 @@ public class ObjectUtil {
     //split a line of a data file into an array
     public static String[] parseLineToTokens(String line) {
         return line.split(";");
-    }
-
-    public static String[] sendProductDataToArray(String[] array) {
-        String[] newArray = new String[array.length - 2];
-        System.arraycopy(array, 2, newArray, 0, array.length - 1);
-        return newArray;
     }
 
     public static JSONObject getPersonDataFromCode(String code) {
@@ -58,5 +53,13 @@ public class ObjectUtil {
 
     public static void addToVenueCodeMap(String key, JSONObject value) {
         venueCodeMap.put(key, value);
+    }
+
+    public static void addToTicketCodeMap(String key, JSONObject value) {
+        ticketCodeMap.put(key, value);
+    }
+
+    public static JSONObject getTicketDataFromCode(String code) {
+        return ticketCodeMap.get(code);
     }
 }

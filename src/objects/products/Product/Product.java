@@ -2,8 +2,8 @@ package objects.products.product;
 
 import objects.base.BaseObject;
 import objects.products.services.ParkingPass;
+import objects.products.tickets.GameTicket;
 import org.json.*;
-import utils.ObjectUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,7 +25,6 @@ public class Product extends BaseObject {
         }
     };
     private static ArrayList<Object> product = productFormat;
-    private String[] productTokens;
 
     public Product(String filePath) throws IOException, JSONException {
         super(filePath);
@@ -38,7 +37,6 @@ public class Product extends BaseObject {
     private JSONArray convertToJSON(ArrayList<String[]> fileArray) throws JSONException {
         for(int counter = 1; counter <= this.numberOfRecords; counter ++) {
             lineTokenArray = fileArray.get(counter);
-            productTokens = ObjectUtil.sendProductDataToArray(lineTokenArray);
             JSONObject jsonObject = new JSONObject();
             for (int count = 0; count < 2; count++) {
                 Object object = product.get(count);
@@ -46,8 +44,9 @@ public class Product extends BaseObject {
                 if(count == 0) {
                     jsonObject.put(object.toString(), value);
                 } else if(object.toString().equals(Product.PARKING_PASS_SHORT)) {
-                    ParkingPass parkingPass = new ParkingPass(productTokens);
-
+                    new ParkingPass(lineTokenArray, jsonObject);
+                } else if(object.toString().equals(Product.GAME_TICKET_SHORT)) {
+                    new GameTicket(lineTokenArray, jsonObject);
                 }
             }
         }
