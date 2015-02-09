@@ -10,7 +10,7 @@ public class DataConverter {
 
     public static void main(String[] args) throws IOException, JSONException {
         Person person = new Person("data/input/Persons.dat");
-//        System.out.println(person.getJSONShell());
+        System.out.println(person.getJSONShell());
         Customer customer = new Customer("data/input/Customers.dat");
         System.out.println(customer.getJSONShell());
     }

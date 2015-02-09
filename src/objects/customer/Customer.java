@@ -14,13 +14,17 @@ import java.util.ArrayList;
 public class Customer extends BaseObject {
 
     private String customerCode;
+    private static final String CUSTOMER_CODE_STRING = "customerCode";
+    private static final String TYPE_STRING = "type";
+    private static final String PRIMARY_CONTACT_STRING = "primaryContact";
+    private static final String NAME_STRING = "name";
     private static ArrayList<String> address = Address.getAddressFormat();
     private static final ArrayList<Object> customerFormat = new ArrayList<Object>() {
         {
-            add("customerCode");
-            add("type");
-            add("primaryContact");
-            add("name");
+            add(Customer.CUSTOMER_CODE_STRING);
+            add(Customer.TYPE_STRING);
+            add(Customer.PRIMARY_CONTACT_STRING);
+            add(Customer.NAME_STRING);
             add(address);
         }
     };
@@ -45,7 +49,7 @@ public class Customer extends BaseObject {
                     customerCode = value;
                 }
                 if(!(object instanceof ArrayList)) {
-                    if(object.toString().equals("primaryContact")) {
+                    if(object.toString().equals(Customer.PRIMARY_CONTACT_STRING)) {
                         jsonObject.put(object.toString(), ObjectUtil.getPersonDataFromCode(value));
                     } else {
                         jsonObject.put(object.toString(), value);

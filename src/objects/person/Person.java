@@ -15,12 +15,13 @@ public class Person extends BaseObject {
 
 
     private String personCode;
+    private static final String PERSON_CODE_STRING = "personCode";
     private static ArrayList<String> name = Name.getNameFormat();
     private static ArrayList<String> address = Address.getAddressFormat();
     private static ArrayList<String> emailAddresses = Email.getEmailFormat();
     private static final ArrayList<Object> personFormat = new ArrayList<Object>() {
         {
-            add("personCode");
+            add(Person.PERSON_CODE_STRING);
             add(name);
             add(address);
             add(emailAddresses);
