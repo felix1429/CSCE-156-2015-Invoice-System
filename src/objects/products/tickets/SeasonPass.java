@@ -1,6 +1,8 @@
 package objects.products.tickets;
 
 import org.json.*;
+import utils.ObjectUtil;
+
 import java.util.ArrayList;
 
 public class SeasonPass {
@@ -31,6 +33,11 @@ public class SeasonPass {
             String token = input[i + 2];
             this.productsJsonObject.put(object.toString(), token);
         }
+        ObjectUtil.addToTicketCodeMap(input[0], this.productsJsonObject);
         return this.productsJsonObject;
+    }
+
+    public static ArrayList<String> getSeasonPassFormat() {
+        return seasonPassFormat;
     }
 }

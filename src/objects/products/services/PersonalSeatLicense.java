@@ -1,8 +1,8 @@
 package objects.products.services;
 
-
-import objects.venue.Venue;
+import org.json.JSONException;
 import org.json.JSONObject;
+import utils.ObjectUtil;
 
 import java.util.ArrayList;
 
@@ -10,12 +10,30 @@ public class PersonalSeatLicense {
 
     public JSONObject psl = new JSONObject();
     public JSONObject productsJsonObject;
-    public static ArrayList<Object> venue = Venue.getVenueFormat();
     public static final String LICENSE_FEE_STRING = "licenseFee";
-    private static final ArrayList<Object> pslFormat = new ArrayList<Object>() {
+    public static final String TICKET = "ticket";
+    private static final ArrayList<String> pslFormat = new ArrayList<String>() {
         {
-            add(venue);
-            add(ParkingPass.HOURLY_FEE_STRING);
+            add(PersonalSeatLicense.TICKET);
+            add(PersonalSeatLicense.LICENSE_FEE_STRING);
         }
     };
+
+    public PersonalSeatLicense(String[] pslArray, JSONObject productsJsonObject) throws JSONException {
+        this.psl = this.parsePsl(pslArray);
+        this.productsJsonObject = productsJsonObject;
+    }
+
+    private JSONObject parsePsl(String[] input) throws JSONException {
+        for(int i = 0; i < input.length - 2; i++) {
+            Object object = pslFormat.get(i);
+            String token = input[i + 2];
+            if(object.toString().equals(PersonalSeatLicense.TICKET)) {
+                this.productsJsonObject.put(object.toString(), ObjectUtil.getTicketDataFromCode(token));
+            } else {
+                this.productsJsonObject.put(object.toString(), token);
+            }
+        }
+        return this.productsJsonObject;
+    }
 }
