@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class PersonalSeatLicense {
 
     public JSONObject psl = new JSONObject();
-    public JSONObject productsJsonObject;
+    public JSONObject productsJsonObject = new JSONObject();
     public static final String LICENSE_FEE_STRING = "licenseFee";
     public static final String TICKET = "ticket";
     private static final ArrayList<String> pslFormat = new ArrayList<String>() {
@@ -20,8 +20,8 @@ public class PersonalSeatLicense {
     };
 
     public PersonalSeatLicense(String[] pslArray, JSONObject productsJsonObject) throws JSONException {
-        this.psl = this.parsePsl(pslArray);
         this.productsJsonObject = productsJsonObject;
+        this.psl = this.parsePsl(pslArray);
     }
 
     private JSONObject parsePsl(String[] input) throws JSONException {

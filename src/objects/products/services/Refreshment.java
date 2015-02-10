@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Refreshment {
 
     public JSONObject refreshment = new JSONObject();
-    public JSONObject productsJsonObject;
+    public JSONObject productsJsonObject = new JSONObject();
     public static final String NAME = "name";
     public static final String COST = "cost";
     private static final ArrayList<String> refreshmentFormat = new ArrayList<String>() {
@@ -19,8 +19,8 @@ public class Refreshment {
     };
 
     public Refreshment(String[] refreshmentArray, JSONObject productsJsonObject) throws JSONException {
-        this.refreshment = this.parseRefreshment(refreshmentArray);
         this.productsJsonObject = productsJsonObject;
+        this.refreshment = this.parseRefreshment(refreshmentArray);
     }
 
     private JSONObject parseRefreshment(String[] input) throws JSONException {

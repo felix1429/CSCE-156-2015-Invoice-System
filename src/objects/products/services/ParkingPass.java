@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class ParkingPass {
 
     public JSONObject parkingPass = new JSONObject();
-    public JSONObject productsJsonObject;
+    public JSONObject productsJsonObject = new JSONObject();
     public static  ArrayList<Object> venue = Venue.getVenueFormat();
     public static final String HOURLY_FEE_STRING = "hourlyFee";
     private static final ArrayList<Object> parkingPassFormat = new ArrayList<Object>() {
@@ -21,8 +21,8 @@ public class ParkingPass {
     };
 
     public ParkingPass(String[] parkingPassArray, JSONObject productsJsonObject) throws JSONException {
-        this.parkingPass = this.parseParkingPass(parkingPassArray);
         this.productsJsonObject = productsJsonObject;
+        this.parkingPass = this.parseParkingPass(parkingPassArray);
     }
 
     private JSONObject parseParkingPass(String[] input) throws JSONException {
@@ -35,6 +35,8 @@ public class ParkingPass {
                 this.productsJsonObject.put(object.toString(), token);
             }
         }
+        System.out.println("hurr");
+        System.out.println(this.productsJsonObject.toString(2));
         return this.productsJsonObject;
     }
 }

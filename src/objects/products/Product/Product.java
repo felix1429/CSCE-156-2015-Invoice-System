@@ -33,7 +33,7 @@ public class Product extends BaseObject {
         super(filePath);
         this.JSONname = Product.JSON_NAME_PRODUCTS;
         this.finalJSON = this.convertToJSON(fileArray);
-        this.finalJSONString = this.finalJSON.toString(3);
+        this.finalJSONString = this.finalJSON.toString(2);
         this.outerJSONObject = createJSONShell(this.JSONname, this.finalJSONString);
     }
 
@@ -47,16 +47,27 @@ public class Product extends BaseObject {
                 if(count < 2) {
                     jsonObject.put(object.toString(), value);
                 }
-                if(object.toString().equals(Product.PARKING_PASS_SHORT)) {
-                    new ParkingPass(lineTokenArray, jsonObject);
-                } else if(object.toString().equals(Product.GAME_TICKET_SHORT)) {
-                    new GameTicket(lineTokenArray, jsonObject);
-                } else if(object.toString().equals(Product.SEASON_PASS_SHORT)) {
-                    new SeasonPass(lineTokenArray, jsonObject);
-                } else if(object.toString().equals(Product.PERSONAL_SEAT_LICENCE_SHORT)) {
-                    new PersonalSeatLicense(lineTokenArray, jsonObject);
-                } else if(object.toString().equals(Product.REFRESHMENT_SHORT)) {
-                    new Refreshment(lineTokenArray, jsonObject);
+                switch (value) {
+                    case Product.PARKING_PASS_SHORT:
+                        ParkingPass parkingPass = new ParkingPass(lineTokenArray, jsonObject);
+                        jsonObject = parkingPass.parkingPass;
+                        break;
+                    case Product.GAME_TICKET_SHORT:
+                        GameTicket gameTicket = new GameTicket(lineTokenArray, jsonObject);
+                        jsonObject = gameTicket.gameTicket;
+                        break;
+                    case Product.SEASON_PASS_SHORT:
+                        SeasonPass seasonPass = new SeasonPass(lineTokenArray, jsonObject);
+                        jsonObject = seasonPass.seasonPass;
+                        break;
+                    case Product.PERSONAL_SEAT_LICENCE_SHORT:
+                        PersonalSeatLicense psl = new PersonalSeatLicense(lineTokenArray, jsonObject);
+                        jsonObject = psl.psl;
+                        break;
+                    case Product.REFRESHMENT_SHORT:
+                        Refreshment refreshment = new Refreshment(lineTokenArray, jsonObject);
+                        jsonObject = refreshment.refreshment;
+                        break;
                 }
             }
             JSONArrayList.put(jsonObject);

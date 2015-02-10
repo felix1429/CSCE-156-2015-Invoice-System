@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class SeasonPass {
 
     public JSONObject seasonPass = new JSONObject();
-    public JSONObject productsJsonObject;
+    public JSONObject productsJsonObject = new JSONObject();
     public static final String TEAM = "team";
     public static final String START_DATE = "startDate";
     public static final String END_DATE = "endDate";
@@ -23,8 +23,8 @@ public class SeasonPass {
     };
 
     public SeasonPass(String[] seasonPassArray, JSONObject productsJsonObject) throws JSONException {
-        this.seasonPass = this.parseSeasonPass(seasonPassArray);
         this.productsJsonObject = productsJsonObject;
+        this.seasonPass = this.parseSeasonPass(seasonPassArray);
     }
 
     private JSONObject parseSeasonPass(String[] input) throws JSONException {

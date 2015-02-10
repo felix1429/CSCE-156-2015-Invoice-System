@@ -34,7 +34,7 @@ public class Customer extends BaseObject {
         super(filePath);
         this.JSONname = "customers";
         this.finalJSON = this.convertToJSON(fileArray);
-        this.finalJSONString = this.finalJSON.toString(3);
+        this.finalJSONString = this.finalJSON.toString(2);
         this.outerJSONObject = createJSONShell(this.JSONname, this.finalJSONString);
     }
 

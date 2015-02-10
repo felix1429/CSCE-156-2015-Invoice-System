@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class GameTicket {
 
     public JSONObject gameTicket = new JSONObject();
-    public JSONObject productsJsonObject;
+    public JSONObject productsJsonObject = new JSONObject();
     public static final String DATE_TIME = "gameDateTime";
     public static final String TEAM_ONE = "team1";
     public static final String TEAM_TWO = "team2";
@@ -26,8 +26,8 @@ public class GameTicket {
     };
 
     public GameTicket(String[] gameTicketArray, JSONObject productsJsonObject) throws JSONException {
-        this.gameTicket = this.parseGameTicket(gameTicketArray);
         this.productsJsonObject = productsJsonObject;
+        this.gameTicket = this.parseGameTicket(gameTicketArray);
     }
 
     private JSONObject parseGameTicket(String[] input) throws JSONException {

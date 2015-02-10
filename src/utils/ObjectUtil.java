@@ -7,11 +7,11 @@ import java.util.HashMap;
 
 public class ObjectUtil {
 
-    private static HashMap<String, JSONObject> personCodeMap = new HashMap<String, JSONObject>();
-    private static HashMap<String, JSONObject> customerCodeMap = new HashMap<String, JSONObject>();
-    private static HashMap<String, JSONObject> productCodeMap = new HashMap<String, JSONObject>();
-    private static HashMap<String, JSONObject> venueCodeMap = new HashMap<String, JSONObject>();
-    private static HashMap<String, JSONObject> ticketCodeMap = new HashMap<String, JSONObject>();
+    private static HashMap<String, JSONObject> personCodeMap = new HashMap<>();
+    private static HashMap<String, JSONObject> customerCodeMap = new HashMap<>();
+    private static HashMap<String, JSONObject> productCodeMap = new HashMap<>();
+    private static HashMap<String, JSONObject> venueCodeMap = new HashMap<>();
+    private static HashMap<String, JSONObject> ticketCodeMap = new HashMap<>();
 
     //convert an element line of a data file into an array
     public static String[] splitToTokens(String list) {

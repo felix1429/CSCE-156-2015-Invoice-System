@@ -33,7 +33,7 @@ public class Person extends BaseObject {
         super(filePath);
         this.JSONname = Person.JSON_NAME_PERSONS;
         this.finalJSON = this.convertToJSON(fileArray);
-        this.finalJSONString = this.finalJSON.toString(3);
+        this.finalJSONString = this.finalJSON.toString(2);
         this.outerJSONObject = createJSONShell(this.JSONname, this.finalJSONString);
     }
 
