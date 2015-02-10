@@ -2,6 +2,8 @@ package objects.products.product;
 
 import objects.base.BaseObject;
 import objects.products.services.ParkingPass;
+import objects.products.services.PersonalSeatLicense;
+import objects.products.services.Refreshment;
 import objects.products.tickets.GameTicket;
 import objects.products.tickets.SeasonPass;
 import org.json.*;
@@ -51,6 +53,10 @@ public class Product extends BaseObject {
                     new GameTicket(lineTokenArray, jsonObject);
                 } else if(object.toString().equals(Product.SEASON_PASS_SHORT)) {
                     new SeasonPass(lineTokenArray, jsonObject);
+                } else if(object.toString().equals(Product.PERSONAL_SEAT_LICENCE_SHORT)) {
+                    new PersonalSeatLicense(lineTokenArray, jsonObject);
+                } else if(object.toString().equals(Product.REFRESHMENT_SHORT)) {
+                    new Refreshment(lineTokenArray, jsonObject);
                 }
             }
             JSONArrayList.put(jsonObject);
