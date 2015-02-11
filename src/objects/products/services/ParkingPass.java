@@ -35,8 +35,6 @@ public class ParkingPass {
                 this.productsJsonObject.put(object.toString(), token);
             }
         }
-        System.out.println("hurr");
-        System.out.println(this.productsJsonObject.toString(2));
         return this.productsJsonObject;
     }
 }

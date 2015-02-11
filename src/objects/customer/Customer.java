@@ -1,11 +1,8 @@
 package objects.customer;
 
-
 import objects.base.BaseObject;
 import objects.other.Address;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.json.*;
 import utils.ObjectUtil;
 
 import java.io.IOException;

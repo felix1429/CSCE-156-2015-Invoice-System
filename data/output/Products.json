@@ -1,0 +1,188 @@
+{
+  "products": [
+    {
+      "startDate": "2014-01-01",
+      "price": "1238.0",
+      "endDate": "2014-05-31",
+      "team": "Chicago Bears",
+      "code": "b29e",
+      "productType": "TS"
+    },
+    {
+      "name": "Labatt Beer-20oz",
+      "code": "ff23",
+      "cost": "4.99",
+      "productType": "SR"
+    },
+    {
+      "price": "187.00",
+      "gameDateTime": "2014-02-11 13:10",
+      "code": "fp12",
+      "venue": {
+        "address": {
+          "zip": "44114",
+          "street": "100 Alfred Lerner Way",
+          "state": "OH",
+          "country": "USA",
+          "city": "Cleveland"
+        },
+        "name": "FirstEnergy Stadium",
+        "capacity": "73204",
+        "venueCode": "st329"
+      },
+      "team1": "Cleveland Browns",
+      "team2": "Detroit Lions",
+      "productType": "TG"
+    },
+    {
+      "hourlyFee": "35.00",
+      "code": "90fa",
+      "venue": {
+        "address": {
+          "zip": "07073",
+          "street": "1 MetLife Stadium Drive",
+          "state": "NJ",
+          "country": "USA",
+          "city": "East Rutherford"
+        },
+        "name": "Metlife Stadium",
+        "capacity": "82566",
+        "venueCode": "a001"
+      },
+      "productType": "SP"
+    },
+    {
+      "price": "340.00",
+      "gameDateTime": "2014-02-11 15:30",
+      "code": "1239",
+      "venue": {
+        "address": {
+          "zip": "76011",
+          "street": "1 AT&T Way",
+          "state": "TX",
+          "country": "USA",
+          "city": "Arlington"
+        },
+        "name": "AT&T Stadium",
+        "capacity": "80000",
+        "venueCode": "ai10"
+      },
+      "team1": "Dallas Cowboys",
+      "team2": "Chicago Bears",
+      "productType": "TG"
+    },
+    {
+      "price": "225.00",
+      "gameDateTime": "2014-04-07 10:00",
+      "code": "782g",
+      "venue": {
+        "address": {
+          "zip": "98134",
+          "street": "800 Occidental Avenue South",
+          "state": "WA",
+          "country": "USA",
+          "city": "Seattle"
+        },
+        "name": "CenturyLink Field",
+        "capacity": "67135",
+        "venueCode": "w111"
+      },
+      "team1": "Seattle Seahawks",
+      "team2": "Atlanta Falcons",
+      "productType": "TG"
+    },
+    {
+      "licenseFee": "55.00",
+      "ticket": {
+        "price": "225.00",
+        "gameDateTime": "2014-04-07 10:00",
+        "code": "782g",
+        "venue": {
+          "address": {
+            "zip": "98134",
+            "street": "800 Occidental Avenue South",
+            "state": "WA",
+            "country": "USA",
+            "city": "Seattle"
+          },
+          "name": "CenturyLink Field",
+          "capacity": "67135",
+          "venueCode": "w111"
+        },
+        "team1": "Seattle Seahawks",
+        "team2": "Atlanta Falcons",
+        "productType": "TG"
+      },
+      "code": "3289",
+      "productType": "SL"
+    },
+    {
+      "name": "Italian Buffet",
+      "code": "32f4",
+      "cost": "18.00",
+      "productType": "SR"
+    },
+    {
+      "startDate": "2014-04-07",
+      "price": "231.0",
+      "endDate": "2014-09-29",
+      "team": "Carolina Panthers",
+      "code": "3y92",
+      "productType": "TS"
+    },
+    {
+      "hourlyFee": "20.00",
+      "code": "90fb",
+      "venue": {
+        "address": {
+          "zip": "76011",
+          "street": "1 AT&T Way",
+          "state": "TX",
+          "country": "USA",
+          "city": "Arlington"
+        },
+        "name": "AT&T Stadium",
+        "capacity": "80000",
+        "venueCode": "ai10"
+      },
+      "productType": "SP"
+    },
+    {
+      "licenseFee": "73.00",
+      "ticket": {
+        "price": "187.00",
+        "gameDateTime": "2014-02-11 13:10",
+        "code": "fp12",
+        "venue": {
+          "address": {
+            "zip": "44114",
+            "street": "100 Alfred Lerner Way",
+            "state": "OH",
+            "country": "USA",
+            "city": "Cleveland"
+          },
+          "name": "FirstEnergy Stadium",
+          "capacity": "73204",
+          "venueCode": "st329"
+        },
+        "team1": "Cleveland Browns",
+        "team2": "Detroit Lions",
+        "productType": "TG"
+      },
+      "code": "xer4",
+      "productType": "SL"
+    },
+    {
+      "licenseFee": "39.00",
+      "ticket": {
+        "startDate": "2014-04-07",
+        "price": "231.0",
+        "endDate": "2014-09-29",
+        "team": "Carolina Panthers",
+        "code": "3y92",
+        "productType": "TS"
+      },
+      "code": "yp23",
+      "productType": "SL"
+    }
+  ]}
