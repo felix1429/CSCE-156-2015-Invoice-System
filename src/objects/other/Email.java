@@ -2,8 +2,7 @@ package objects.other;
 
 import utils.ObjectUtil;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 
 public class Email {
 

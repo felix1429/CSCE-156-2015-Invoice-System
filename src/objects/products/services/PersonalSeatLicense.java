@@ -1,9 +1,8 @@
 package objects.products.services;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import utils.ObjectUtil;
 
+import org.json.*;
 import java.util.ArrayList;
 
 public class PersonalSeatLicense {

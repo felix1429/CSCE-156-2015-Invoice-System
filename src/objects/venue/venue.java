@@ -1,12 +1,10 @@
 package objects.venue;
 
-
 import objects.base.BaseObject;
 import objects.other.Address;
-
-import org.json.*;
 import utils.ObjectUtil;
 
+import org.json.*;
 import java.io.IOException;
 import java.util.ArrayList;
 

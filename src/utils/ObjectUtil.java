@@ -1,15 +1,11 @@
 package utils;
 
-
 import org.json.JSONObject;
-
 import java.util.HashMap;
 
 public class ObjectUtil {
 
     private static HashMap<String, JSONObject> personCodeMap = new HashMap<>();
-    private static HashMap<String, JSONObject> customerCodeMap = new HashMap<>();
-    private static HashMap<String, JSONObject> productCodeMap = new HashMap<>();
     private static HashMap<String, JSONObject> venueCodeMap = new HashMap<>();
     private static HashMap<String, JSONObject> ticketCodeMap = new HashMap<>();
 
@@ -29,22 +25,6 @@ public class ObjectUtil {
 
     public static void addToPersonCodeMap(String key, JSONObject value) {
         personCodeMap.put(key, value);
-    }
-
-    public static JSONObject getCustomerDataFromCode(String code) {
-        return customerCodeMap.get(code);
-    }
-
-    public static void addToCustomerCodeMap(String key, JSONObject value) {
-        customerCodeMap.put(key, value);
-    }
-
-    public static JSONObject getProductDataFromCode(String code) {
-        return productCodeMap.get(code);
-    }
-
-    public static void addToProductCodeMap(String key, JSONObject value) {
-        productCodeMap.put(key, value);
     }
 
     public static JSONObject getVenueDataFromCode(String code) {

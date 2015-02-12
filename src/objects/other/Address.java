@@ -3,7 +3,6 @@ package objects.other;
 import utils.ObjectUtil;
 
 import org.json.*;
-
 import java.util.ArrayList;
 
 public class Address {

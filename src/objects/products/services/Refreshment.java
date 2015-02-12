@@ -1,8 +1,6 @@
 package objects.products.services;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import org.json.*;
 import java.util.ArrayList;
 
 public class Refreshment {
