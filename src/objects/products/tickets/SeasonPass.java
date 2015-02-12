@@ -36,8 +36,4 @@ public class SeasonPass {
         ObjectUtil.addToTicketCodeMap(input[0], this.productsJsonObject);
         return this.productsJsonObject;
     }
-
-    public static ArrayList<String> getSeasonPassFormat() {
-        return seasonPassFormat;
-    }
 }

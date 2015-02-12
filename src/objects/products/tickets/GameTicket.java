@@ -43,8 +43,4 @@ public class GameTicket {
         ObjectUtil.addToTicketCodeMap(input[0], this.productsJsonObject);
         return this.productsJsonObject;
     }
-
-    public static ArrayList<Object> getGameTicketFormat() {
-        return gameTicketFormat;
-    }
 }
