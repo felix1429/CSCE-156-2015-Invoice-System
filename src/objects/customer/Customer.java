@@ -56,8 +56,13 @@ public class Customer extends BaseObject {
                     jsonObject.put(Address.ADDRESS_STRING, address.address);
                 }
             }
+            ObjectUtil.addToCustomerCodeMap(customerCode, jsonObject);
             JSONArrayList.put(jsonObject);
         }
         return JSONArrayList;
+    }
+
+    public static ArrayList<Object> getCustomerFormat() {
+        return customerFormat;
     }
 }

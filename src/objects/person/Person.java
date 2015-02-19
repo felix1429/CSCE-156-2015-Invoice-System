@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class Person extends BaseObject {
 
     private String personCode;
-    private static final String PERSON_CODE_STRING = "personCode";
     private static final String JSON_NAME_PERSONS = "persons";
+    private static final String PERSON_CODE_STRING = "personCode";
     private static ArrayList<String> name = Name.getNameFormat();
     private static ArrayList<String> address = Address.getAddressFormat();
     private static ArrayList<String> emailAddresses = Email.getEmailFormat();
@@ -65,5 +65,9 @@ public class Person extends BaseObject {
             JSONArrayList.put(jsonObject);
         }
         return JSONArrayList;
+    }
+
+    public static ArrayList<Object> getPersonFormat() {
+        return personFormat;
     }
 }
