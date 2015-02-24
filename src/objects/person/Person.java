@@ -5,9 +5,9 @@ import objects.base.BaseObject;
 import objects.other.Address;
 import objects.other.Email;
 import objects.other.Name;
-import org.json.*;
 import utils.ObjectUtil;
 
+import org.json.*;
 import java.io.IOException;
 import java.util.ArrayList;
 

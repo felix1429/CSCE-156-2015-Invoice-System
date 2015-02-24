@@ -5,19 +5,22 @@ import objects.products.services.*;
 import objects.products.tickets.*;
 
 import org.json.*;
+import utils.ObjectUtil;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class Product extends BaseObject {
 
+    private String productCode;
     private static final String PRODUCT_CODE_STRING = "code";
     public static final String PRODUCT_TYPE_STRING = "productType";
     private static final String JSON_NAME_PRODUCTS = "products";
     public static final String GAME_TICKET_SHORT = "TG";
     public static final String SEASON_PASS_SHORT = "TS";
     public static final String PARKING_PASS_SHORT = "SP";
-    private static final String PERSONAL_SEAT_LICENCE_SHORT = "SL";
-    private static final String REFRESHMENT_SHORT = "SR";
+    public static final String PERSONAL_SEAT_LICENCE_SHORT = "SL";
+    public static final String REFRESHMENT_SHORT = "SR";
     private static final ArrayList<Object> productFormat = new ArrayList<Object>() {
         {
             add(Product.PRODUCT_CODE_STRING);
@@ -41,6 +44,9 @@ public class Product extends BaseObject {
             for (int count = 0; count < 2; count++) {
                 Object object = product.get(count);
                 value = lineTokenArray[count];
+                if(object.toString().equals(Product.PRODUCT_CODE_STRING)) {
+                    productCode = value;
+                }
                 if(count < 2) {
                     jsonObject.put(object.toString(), value);
                 }
@@ -67,6 +73,7 @@ public class Product extends BaseObject {
                         break;
                 }
             }
+            ObjectUtil.addToProductCodeMap(productCode, jsonObject);
             JSONArrayList.put(jsonObject);
         }
         return JSONArrayList;

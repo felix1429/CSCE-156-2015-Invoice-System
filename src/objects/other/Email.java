@@ -7,7 +7,7 @@ import java.util.*;
 public class Email {
 
     public static final String EMAILS_STRING = "emails";
-    private static final ArrayList<String> emailFormat = new ArrayList<String>();
+    private static final ArrayList<String> emailFormat = new ArrayList<>();
     public ArrayList<String> emailAddresses = new ArrayList<>();
 
     public Email(String emails) {
@@ -16,7 +16,7 @@ public class Email {
 
     private ArrayList<String> parseEmail(String input) {
         String values[] = ObjectUtil.splitToTokens(input);
-        ArrayList<String> emails = new ArrayList<String>();
+        ArrayList<String> emails = new ArrayList<>();
         Collections.addAll(emails, values);
         return emails;
     }

@@ -9,6 +9,7 @@ public class ObjectUtil {
     private static HashMap<String, JSONObject> venueCodeMap = new HashMap<>();
     private static HashMap<String, JSONObject> ticketCodeMap = new HashMap<>();
     private static HashMap<String, JSONObject> customerCodeMap = new HashMap<>();
+    private static HashMap<String, JSONObject> productCodeMap = new HashMap<>();
 
     //convert an element line of a data file into an array
     public static String[] splitToTokens(String list) {
@@ -50,5 +51,13 @@ public class ObjectUtil {
 
     public static JSONObject getCustomerDataFromCode(String code) {
         return customerCodeMap.get(code);
+    }
+
+    public static void addToProductCodeMap(String key, JSONObject value) {
+        productCodeMap.put(key, value);
+    }
+
+    public static JSONObject getProductDataFromCode(String code) {
+        return productCodeMap.get(code);
     }
 }
