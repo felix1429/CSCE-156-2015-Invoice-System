@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 public class Invoice extends BaseObject{
 
-    private String invoiceCode;
     private static final String JSON_NAME_INVOICES = "invoices";
     private static final String INVOICE_CODE_STRING = "invoiceCode";
     private static final String INVOICE_DATE_STRING = "invoiceDate";
@@ -46,9 +45,6 @@ public class Invoice extends BaseObject{
             for(int count = 0; count < lineTokenArray.length; count++) {
                 Object object = invoiceFormat.get(count);
                 value = lineTokenArray[count];
-                if(count == 0) {
-                    invoiceCode = value;
-                }
                 if(!(object instanceof ArrayList) && object != products) {
                     jsonObject.put(object.toString(), value);
                 } else {
