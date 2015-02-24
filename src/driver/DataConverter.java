@@ -1,6 +1,7 @@
 package driver;
 
 import objects.customer.Customer;
+import objects.invoice.Invoice;
 import objects.person.Person;
 import objects.products.product.Product;
 import objects.venue.Venue;
@@ -19,5 +20,7 @@ public class DataConverter {
         System.out.println(venue.getJSONShell());
         Product product = new Product("data/input/Products.dat");
         System.out.println(product.getJSONShell());
+        Invoice invoice = new Invoice("data/input/Invoices.dat");
+        System.out.println(invoice.getJSONShell());
     }
 }
