@@ -36,6 +36,6 @@ public class Invoice extends BaseObject{
     }
 
     private JSONArray convertToJSON(ArrayList<String[]> fileArray) throws JSONException {
-
+        
     }
 }

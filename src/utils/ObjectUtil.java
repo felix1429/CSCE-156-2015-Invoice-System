@@ -21,6 +21,10 @@ public class ObjectUtil {
         return line.split(";");
     }
 
+    public static String[] parseProductDataToTokens(String data) {
+        return data.split(":");
+    }
+
     public static JSONObject getPersonDataFromCode(String code) {
         return personCodeMap.get(code);
     }
