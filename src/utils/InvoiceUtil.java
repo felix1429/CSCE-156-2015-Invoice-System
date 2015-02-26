@@ -14,8 +14,9 @@ public class InvoiceUtil {
         for(String key : keys) {
             if(key.equals(keys[length - 1])) {
                 value = object.getString(key);
+            } else {
+                object = object.getJSONObject(key);
             }
-            object = object.getJSONObject(key);
         }
         return value;
     }

@@ -46,4 +46,8 @@ abstract public class BaseObject {
     public String createJSONShell(String JSONName, String finalString) {
         return "{\n\"" + JSONName + "\": " + finalString + "}";
     }
+
+    public JSONArray getFinalJSON() {
+        return this.finalJSON;
+    }
 }
