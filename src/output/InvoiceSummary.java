@@ -110,10 +110,13 @@ public class InvoiceSummary {
             product = (JSONObject) products.get(counter);
             secondLine = false;
             String itemInfo = getItemInfo(product);
+            getItemTotal(product);
             productString += InvoiceUtil.getNestedJSON(product, "product", "code")
                     + InvoiceUtil.generateString(" ", 6)
                     + itemInfo + (InvoiceUtil.generateString(" ", ITEM_TO_SUBTOTAL - itemInfo.length()))
-            + "$" + "\n";
+                    + "$" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(subtotal).length()) + putTwoZeros(subtotal)
+                    + " $" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(tax).length()) + putTwoZeros(tax)
+                    + " $" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(total).length()) + putTwoZeros(total) + "\n";
 //            + (secondLine ? );
         }
         return productString;
@@ -146,8 +149,9 @@ public class InvoiceSummary {
             case Product.PARKING_PASS_SHORT:
                 int quantity = Integer.parseInt(product.getString("quantity"));
                 int hoursValid = Integer.parseInt(product.getString("hoursValid"));
-                subtotal = quantity * hoursValid;
-                tax = (getCustomerType().equals("Member")? 0 : subtotal * SERVICE_TAX_RATE);
+                double hourlyFee = Double.parseDouble(InvoiceUtil.getNestedJSON(product, "product", "hourlyFee"));
+                subtotal = quantity * hoursValid * hourlyFee;
+                tax = getCustomerType().equals("Member")? 0 : subtotal * SERVICE_TAX_RATE;
                 break;
             case Product.GAME_TICKET_SHORT:
 //                info = getGameTicketInfo(product);
@@ -162,6 +166,21 @@ public class InvoiceSummary {
 //                info = getRefreshmentInfo(product);
                 break;
         }
+        if(getCustomerType().equals("Member")) {
+            total = (subtotal * .97) + 120;
+        } else if(getCustomerType().equals("Agent")) {
+            total = (subtotal * .88) + tax + 150;
+        } else {
+            total = subtotal + tax;
+        }
+    }
+
+    public String putTwoZeros(double in) {
+        String st = String.valueOf(in);
+        if(st.substring((st.length() - 2)).contains(".")) {
+            st += "0";
+        }
+        return st;
     }
 
     private String getParkingPassInfo(JSONObject product) throws JSONException {
@@ -173,10 +192,10 @@ public class InvoiceSummary {
                 + hoursValid + (hoursValid == 1 ? " hr" : " hrs") + ")";
     }
 
-//    private String getGameTicketInfo(JSONObject product) {
-//
-//    }
-//
+    private String getGameTicketInfo(JSONObject product) throws JSONException {
+        return "Game Ticket " + product.getString("date")
+    }
+
 //    private String getSeasonPassInfo(JSONObject product) {
 //
 //    }
