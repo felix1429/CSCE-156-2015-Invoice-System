@@ -9,7 +9,7 @@ public class InvoiceSummary {
     private JSONArray input;
     private JSONObject invoice;
     private String fullReport;
-    private boolean secondLine;
+    private String secondLine;
     private double subtotal;
     private double tax;
     private double total;
@@ -108,7 +108,7 @@ public class InvoiceSummary {
         JSONObject product;
         for(int counter = 0; counter < products.length(); counter ++) {
             product = (JSONObject) products.get(counter);
-            secondLine = false;
+            secondLine = "";
             String itemInfo = getItemInfo(product);
             getItemTotal(product);
             productString += InvoiceUtil.getNestedJSON(product, "product", "code")
@@ -116,8 +116,8 @@ public class InvoiceSummary {
                     + itemInfo + (InvoiceUtil.generateString(" ", ITEM_TO_SUBTOTAL - itemInfo.length()))
                     + "$" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(subtotal).length()) + putTwoZeros(subtotal)
                     + " $" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(tax).length()) + putTwoZeros(tax)
-                    + " $" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(total).length()) + putTwoZeros(total) + "\n";
-//            + (secondLine ? );
+                    + " $" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(total).length()) + putTwoZeros(total) + "\n"
+                    + (secondLine.equals("") ? "" : InvoiceUtil.generateString(" ", 10) + secondLine + "\n");
         }
         return productString;
     }
@@ -129,7 +129,7 @@ public class InvoiceSummary {
                 info = getParkingPassInfo(product);
                 break;
             case Product.GAME_TICKET_SHORT:
-//                info = getGameTicketInfo(product);
+                info = getGameTicketInfo(product);
                 break;
             case Product.SEASON_PASS_SHORT:
 //                info = getSeasonPassInfo(product);
@@ -193,7 +193,12 @@ public class InvoiceSummary {
     }
 
     private String getGameTicketInfo(JSONObject product) throws JSONException {
-        return "Game Ticket " + product.getString("date")
+        int quantity = Integer.parseInt(product.getString("quantity"));
+        String price = InvoiceUtil.getNestedJSON(product, "product", "price");
+        secondLine = "(" + quantity + " " + (quantity == 1 ? "unit" : "units") + " @ $" + price + "/unit)";
+        return "Game Ticket " + InvoiceUtil.getNestedJSON(product, "product", "gameDateTime")
+                + " " + InvoiceUtil.getNestedJSON(product, "product", "team1") + " vs "
+                + InvoiceUtil.getNestedJSON(product, "product", "team2");
     }
 
 //    private String getSeasonPassInfo(JSONObject product) {
