@@ -145,16 +145,21 @@ public class InvoiceSummary {
     }
 
     private void getItemTotal(JSONObject product) throws JSONException {
+        int quantity;
+        double price;
         switch (InvoiceUtil.getNestedJSON(product, "product", "productType")) {
             case Product.PARKING_PASS_SHORT:
-                int quantity = Integer.parseInt(product.getString("quantity"));
+                quantity = Integer.parseInt(product.getString("quantity"));
                 int hoursValid = Integer.parseInt(product.getString("hoursValid"));
-                double hourlyFee = Double.parseDouble(InvoiceUtil.getNestedJSON(product, "product", "hourlyFee"));
-                subtotal = quantity * hoursValid * hourlyFee;
-                tax = getCustomerType().equals("Member")? 0 : subtotal * SERVICE_TAX_RATE;
+                price = Double.parseDouble(InvoiceUtil.getNestedJSON(product, "product", "hourlyFee"));
+                subtotal = quantity * hoursValid * price;
+                tax = getCustomerType().equals("Member") ? 0 : subtotal * SERVICE_TAX_RATE;
                 break;
             case Product.GAME_TICKET_SHORT:
-//                info = getGameTicketInfo(product);
+                quantity = Integer.parseInt(product.getString("quantity"));
+                price = Double.parseDouble(InvoiceUtil.getNestedJSON(product, "product", "price"));
+                subtotal = quantity * price;
+                tax = getCustomerType().equals("Member") ? 0 : subtotal * TICKET_TAX_RATE;
                 break;
             case Product.SEASON_PASS_SHORT:
 //                info = getSeasonPassInfo(product);
@@ -176,6 +181,7 @@ public class InvoiceSummary {
     }
 
     public String putTwoZeros(double in) {
+        in = Math.round(in * 100.0) / 100.0;
         String st = String.valueOf(in);
         if(st.substring((st.length() - 2)).contains(".")) {
             st += "0";
