@@ -135,7 +135,7 @@ public class InvoiceSummary {
                 info = getSeasonPassInfo(product);
                 break;
             case Product.PERSONAL_SEAT_LICENCE_SHORT:
-//                info = getPSLInfo(product);
+                info = getPSLInfo(product);
                 break;
             case Product.REFRESHMENT_SHORT:
 //                info = getRefreshmentInfo(product);
@@ -174,10 +174,13 @@ public class InvoiceSummary {
                 } else {
                     subtotal = ((price / daysBetween) * effectiveDays + ((daysBetween - effectiveDays) * ((price / daysBetween) * .3))) * quantity;
                 }
-                tax = getCustomerType().equals("Member") ? 0 : subtotal * SERVICE_TAX_RATE;
+                tax = getCustomerType().equals("Member") ? 0 : subtotal * TICKET_TAX_RATE;
                 break;
             case Product.PERSONAL_SEAT_LICENCE_SHORT:
-//                info = getPSLInfo(product);
+                quantity = ((String[])product.get("seats")).length;
+                double ticketPrice = Double.parseDouble(InvoiceUtil.getNestedJSON(product, "product", "ticket", "price"));
+                subtotal = ((ticketPrice * .18) * quantity) + 55;
+                tax = getCustomerType().equals("Member") ? 0 : subtotal * SERVICE_TAX_RATE;
                 break;
             case Product.REFRESHMENT_SHORT:
 //                info = getRefreshmentInfo(product);
@@ -231,10 +234,13 @@ public class InvoiceSummary {
         return "Season Pass - " + InvoiceUtil.getNestedJSON(product, "product", "team");
     }
 
-//    private String getPSLInfo(JSONObject product) {
-//
-//    }
-//
+    private String getPSLInfo(JSONObject product) throws JSONException {
+        String[] seats = (String[])product.get("seats");
+        return "PSL [" + seats[0] + ", " + seats[1] + "] (" + seats.length + " units @ 18% of "
+                + InvoiceUtil.getNestedJSON(product, "product", "ticket", "code")
+                + " with $55.00 fee)";
+    }
+
 //    private String getRefreshmentInfo(JSONObject product) {
 //
 //    }
