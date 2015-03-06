@@ -132,7 +132,7 @@ public class InvoiceSummary {
                 info = getGameTicketInfo(product);
                 break;
             case Product.SEASON_PASS_SHORT:
-//                info = getSeasonPassInfo(product);
+                info = getSeasonPassInfo(product);
                 break;
             case Product.PERSONAL_SEAT_LICENCE_SHORT:
 //                info = getPSLInfo(product);
@@ -162,7 +162,19 @@ public class InvoiceSummary {
                 tax = getCustomerType().equals("Member") ? 0 : subtotal * TICKET_TAX_RATE;
                 break;
             case Product.SEASON_PASS_SHORT:
-//                info = getSeasonPassInfo(product);
+                quantity = Integer.parseInt(product.getString("quantity"));
+                String startDate = InvoiceUtil.getNestedJSON(product, "product", "startDate");
+                String endDate = InvoiceUtil.getNestedJSON(product, "product", "endDate");
+                int daysBetween = InvoiceUtil.getDaysBetweenDates(startDate, endDate);
+                String invoiceDate = invoice.getString("invoiceDate");
+                int effectiveDays = (daysBetween - InvoiceUtil.getDaysBetweenDates(startDate, invoiceDate));
+                price = Double.parseDouble(InvoiceUtil.getNestedJSON(product, "product", "price"));
+                if(daysBetween == effectiveDays) {
+                    subtotal = price * quantity;
+                } else {
+                    subtotal = ((price / daysBetween) * effectiveDays + ((daysBetween - effectiveDays) * ((price / daysBetween) * .3))) * quantity;
+                }
+                tax = getCustomerType().equals("Member") ? 0 : subtotal * SERVICE_TAX_RATE;
                 break;
             case Product.PERSONAL_SEAT_LICENCE_SHORT:
 //                info = getPSLInfo(product);
@@ -207,10 +219,18 @@ public class InvoiceSummary {
                 + InvoiceUtil.getNestedJSON(product, "product", "team2");
     }
 
-//    private String getSeasonPassInfo(JSONObject product) {
-//
-//    }
-//
+    private String getSeasonPassInfo(JSONObject product) throws JSONException {
+        int quantity = Integer.parseInt(product.getString("quantity"));
+        String startDate = InvoiceUtil.getNestedJSON(product, "product", "startDate");
+        String endDate = InvoiceUtil.getNestedJSON(product, "product", "endDate");
+        String invoiceDate = invoice.getString("invoiceDate");
+        int daysBetween = InvoiceUtil.getDaysBetweenDates(startDate, endDate);
+        secondLine = "(" + quantity + " units @ $" + InvoiceUtil.getNestedJSON(product, "product", "price")
+                + "0/unit prorated " + ((daysBetween - InvoiceUtil.getDaysBetweenDates(startDate, invoiceDate)) + 1)
+                + "/" + daysBetween + " days)";
+        return "Season Pass - " + InvoiceUtil.getNestedJSON(product, "product", "team");
+    }
+
 //    private String getPSLInfo(JSONObject product) {
 //
 //    }
