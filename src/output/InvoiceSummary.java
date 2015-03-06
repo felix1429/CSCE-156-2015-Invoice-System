@@ -13,6 +13,8 @@ public class InvoiceSummary {
     private double subtotal;
     private double tax;
     private double total;
+    private double invoiceTax;
+    private double invoiceSubtotal;
     private final double TICKET_TAX_RATE = .06;
     private final double SERVICE_TAX_RATE = .04;
     private final int ITEM_TO_SUBTOTAL = 70;
@@ -117,7 +119,7 @@ public class InvoiceSummary {
                     + "$" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(subtotal).length()) + putTwoZeros(subtotal)
                     + " $" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(tax).length()) + putTwoZeros(tax)
                     + " $" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(total).length()) + putTwoZeros(total) + "\n"
-                    + (secondLine.equals("") ? "" : InvoiceUtil.generateString(" ", 10) + secondLine + "\n");
+                    + (secondLine.equals("") ? secondLine : InvoiceUtil.generateString(" ", 10) + secondLine + "\n");
         }
         return productString;
     }
@@ -138,7 +140,7 @@ public class InvoiceSummary {
                 info = getPSLInfo(product);
                 break;
             case Product.REFRESHMENT_SHORT:
-//                info = getRefreshmentInfo(product);
+                info = getRefreshmentInfo(product);
                 break;
         }
         return info;
@@ -183,13 +185,15 @@ public class InvoiceSummary {
                 tax = getCustomerType().equals("Member") ? 0 : subtotal * SERVICE_TAX_RATE;
                 break;
             case Product.REFRESHMENT_SHORT:
-//                info = getRefreshmentInfo(product);
+                quantity = Integer.parseInt(product.getString("quantity"));
+                subtotal = Double.parseDouble(InvoiceUtil.getNestedJSON(product, "product", "cost")) * quantity;
+                tax = getCustomerType().equals("Member") ? 0 : subtotal * SERVICE_TAX_RATE;
                 break;
         }
         if(getCustomerType().equals("Member")) {
-            total = (subtotal * .97) + 120;
+            total = (subtotal * .97);
         } else if(getCustomerType().equals("Agent")) {
-            total = (subtotal * .88) + tax + 150;
+            total = (subtotal * .88) + tax;
         } else {
             total = subtotal + tax;
         }
@@ -241,10 +245,13 @@ public class InvoiceSummary {
                 + " with $55.00 fee)";
     }
 
-//    private String getRefreshmentInfo(JSONObject product) {
-//
-//    }
-//
+    private String getRefreshmentInfo(JSONObject product) throws JSONException {
+        int quantity = Integer.parseInt(product.getString("quantity"));
+        return InvoiceUtil.getNestedJSON(product, "product", "name") + " ("
+                + quantity + (quantity == 1 ? " unit" : " units") + " @ "
+                + InvoiceUtil.getNestedJSON(product, "product", "cost") + "/unit)";
+    }
+
     public String getFullReport() {
         return this.fullReport;
     }
