@@ -1,0 +1,102 @@
+Executive Summary Report
+=========================
+Invoice   Customer                                          Salesperson                      Subtotal        Fees       Taxes    Discount       Total
+INV004    Venture Club - Member                             Hurndall, Richard             $    234.00 $    120.00 $      0.00 $    -16.38 $    337.62
+INV002    Stark Associates - Agent                          Tennant, David                $  16227.00 $    150.00 $    945.90 $  -2060.75 $  15262.15
+INV001    Cinco Consultants - Member                        Eccleston, Chris              $   2208.10 $    120.00 $      0.00 $   -154.57 $   2173.53
+INV003    Vandelay Industries - Non-Member                  Smith, Matt                   $   1831.00 $      0.00 $    104.74 $     -0.00 $   1935.74
+=====================================================================================================================================================
+TOTALS                                                                                    $  20500.10 $    390.00 $   1050.64 $  -2231.70 $  19709.05
+
+
+
+
+
+Individual Invoice Detail Reports
+==================================================
+Invoice INV001
+========================
+Salesperson: Eccleston, Chris
+Customer Info:
+    Cinco Consultants (C001)
+    Member
+    Baker, Tom
+    259 Concorde Suites
+    Lincoln NE 68588-0115 USA
+---------------------------------------------
+Code      Item                                                                      Subtotal        Tax       Total
+b29e      Season Pass - Chicago Bears                                           $   2083.14 $      0.00 $   2083.14
+          (2 units @ $1238.00/unit prorated 117/150 days)
+90fa      Parking Pass 2015-01-22 (1 unit @ $35.00/hr for 3 hrs)                $    105.00 $      0.00 $    105.00
+ff23      Labatt Beer-20oz (4 units @ 4.99/unit)                                $     19.96 $      0.00 $     19.96
+                                                                                ===================================
+SUBTOTAL                                                                        $   2208.10 $      0.00 $   2208.10
+DISCOUNT (7% & NO TAX)                                                                                  $   -143.75
+ADDITIONAL FEE (Member)                                                                                 $    120.00
+TOTAL                                                                                                   $   2173.53
+
+
+Invoice INV002
+========================
+Salesperson: Tennant, David
+Customer Info:
+    Stark Associates (C002)
+    Agent
+    Castro, Starlin
+    184 Marvel Way
+    New York NY 10453 USA
+---------------------------------------------
+Code      Item                                                                      Subtotal        Tax       Total
+fp12      Game Ticket 2014-02-11 13:10 Cleveland Browns vs Detroit Lions        $   4301.00 $    258.06 $   4559.06
+          (23 units @ $187.00/unit)
+1239      Game Ticket 2014-02-11 15:30 Dallas Cowboys vs Chicago Bears          $  10540.00 $    632.40 $  11172.40
+          (31 units @ $340.00/unit)
+32f4      Italian Buffet (7 units @ 18.00/unit)                                 $    126.00 $      5.04 $    131.04
+90fa      Parking Pass 2015-03-13 (12 units @ $35.00/hr for 3 hrs)              $   1260.00 $     50.40 $   1310.40
+                                                                                ===================================
+SUBTOTAL                                                                        $  16227.00 $    945.90 $  17172.90
+DISCOUNT (12%)                                                                                          $  -1813.46
+ADDITIONAL FEE (Agent)                                                                                  $    150.00
+TOTAL                                                                                                   $  15262.15
+
+
+Invoice INV003
+========================
+Salesperson: Smith, Matt
+Customer Info:
+    Vandelay Industries (C005)
+    Non-Member
+    Ehrmantraut, Kaylee
+    1060 West Addison
+    Chicago IL 60601 USA
+---------------------------------------------
+Code      Item                                                                      Subtotal        Tax       Total
+782g      Game Ticket 2014-04-07 10:00 Seattle Seahawks vs Atlanta Falcons      $   1575.00 $     94.50 $   1669.50
+          (7 units @ $225.00/unit)
+3289      PSL [30B, 21K] (2 units @ 18% of 782g with $55.00 fee)                $    136.00 $      5.44 $    141.44
+90fb      Parking Pass 2015-01-22 (2 units @ $20.00/hr for 3 hrs)               $    120.00 $      4.80 $    124.80
+                                                                                ===================================
+SUBTOTAL                                                                        $   1831.00 $    104.74 $   1935.74
+DISCOUNT (0%)                                                                                           $     -0.00
+ADDITIONAL FEE (Non-Member)                                                                             $      0.00
+TOTAL                                                                                                   $   1935.74
+
+
+Invoice INV004
+========================
+Salesperson: Hurndall, Richard
+Customer Info:
+    Venture Club (C003)
+    Member
+    Sampson, Brock
+    123 Venture Way
+    Culver City CA 90230 USA
+---------------------------------------------
+Code      Item                                                                      Subtotal        Tax       Total
+90fb      Parking Pass 2014-03-09 (3 units @ $20.00/hr for 3 hrs)               $    180.00 $      0.00 $    180.00
+32f4      Italian Buffet (3 units @ 18.00/unit)                                 $     54.00 $      0.00 $     54.00
+                                                                                ===================================
+SUBTOTAL                                                                        $    234.00 $      0.00 $    234.00
+DISCOUNT (7% & NO TAX)                                                                                  $    -15.23
+ADDITIONAL FEE (Member)                                                                                 $    120.00
+TOTAL                                                                                                   $    337.62

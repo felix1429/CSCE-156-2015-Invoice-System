@@ -32,8 +32,7 @@ public class InvoiceSummary {
     private String generateFullReport() throws JSONException {
         String individualReports = generateIndividualReportList();
         String summary = generateSummaryReport();
-        String overallInvoice = summary + individualReports;
-        return overallInvoice;
+        return summary + individualReports;
     }
 
     private String generateIndividualReportList() throws JSONException {
