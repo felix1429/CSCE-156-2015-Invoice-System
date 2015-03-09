@@ -3,6 +3,7 @@ package output;
 import objects.products.product.Product;
 import org.json.*;
 import utils.InvoiceUtil;
+import java.util.Map;
 
 public class InvoiceSummary {
 
@@ -16,6 +17,9 @@ public class InvoiceSummary {
     private double invoiceTax;
     private double invoiceSubtotal;
     private double invoiceTotal;
+    private double invoiceFee;
+    private double invoiceDiscount;
+    private Double[] totals = {0.0, 0.0, 0.0, 0.0, 0.0};
     private final double TICKET_TAX_RATE = .06;
     private final double SERVICE_TAX_RATE = .04;
     private final int ITEM_TO_SUBTOTAL = 70;
@@ -27,7 +31,9 @@ public class InvoiceSummary {
 
     private String generateFullReport() throws JSONException {
         String individualReports = generateIndividualReportList();
-        return individualReports;
+        String summary = generateSummaryReport();
+        String overallInvoice = summary + individualReports;
+        return overallInvoice;
     }
 
     private String generateIndividualReportList() throws JSONException {
@@ -46,9 +52,44 @@ public class InvoiceSummary {
                     + getColumns() + "\n"
                     + getProductInfo()
                     + "\n\n";
+            totals[0] += invoiceSubtotal;
+            totals[1] += invoiceFee;
+            totals[2] += invoiceTax;
+            totals[3] += invoiceDiscount;
+            totals[4] += invoiceTotal;
         }
 
         return output;
+    }
+
+    private String generateSummaryReport() throws JSONException {
+        String output = "";
+        output += "Executive Summary Report\n"
+                + InvoiceUtil.generateString("=", 25) + "\n"
+                + getSummaryColumns() + "\n";
+        for(Map.Entry<JSONObject, Double[]> entry : InvoiceUtil.getInvoiceMap().entrySet()) {
+            JSONObject localInvoice = entry.getKey();
+            Double[] invoiceMoney = entry.getValue();
+            String customer = InvoiceUtil.getNestedJSON(localInvoice, "customer", "name") + " - "
+                    + InvoiceUtil.getFullCustomerType(InvoiceUtil.getNestedJSON(localInvoice, "customer", "type"));
+            String invoiceSalesperson = getName(localInvoice.getJSONObject("salesperson"));
+            output += localInvoice.getString("invoiceCode") + "    "
+                    + customer + InvoiceUtil.generateString(" ", (50 - customer.length()))
+                    + invoiceSalesperson + InvoiceUtil.generateString(" ", (30 - invoiceSalesperson.length()))
+                    + "$" + InvoiceUtil.generateString(" ", (10 - putTwoZeros(invoiceMoney[0]).length())) + putTwoZeros(invoiceMoney[0])
+                    + " $" + InvoiceUtil.generateString(" ", (10 - putTwoZeros(invoiceMoney[1]).length())) + putTwoZeros(invoiceMoney[1])
+                    + " $" + InvoiceUtil.generateString(" ", (10 - putTwoZeros(invoiceMoney[2]).length())) + putTwoZeros(invoiceMoney[2])
+                    + " $" + InvoiceUtil.generateString(" ", (9 - putTwoZeros(invoiceMoney[3]).length())) + "-" + putTwoZeros(invoiceMoney[3])
+                    + " $" + InvoiceUtil.generateString(" ", (10 - putTwoZeros(invoiceMoney[4]).length())) + putTwoZeros(invoiceMoney[4]) + "\n";
+        }
+        output += InvoiceUtil.generateString("=", 149) + "\n";
+        output += "TOTALS" + InvoiceUtil.generateString(" ", 84)
+                + "$" + InvoiceUtil.generateString(" ", (10 - putTwoZeros(totals[0]).length())) + putTwoZeros(totals[0])
+         + " $" + InvoiceUtil.generateString(" ", (10 - putTwoZeros(totals[1]).length())) + putTwoZeros(totals[1])
+         + " $" + InvoiceUtil.generateString(" ", (10 - putTwoZeros(totals[2]).length())) + putTwoZeros(totals[2])
+         + " $" + InvoiceUtil.generateString(" ", (9 - putTwoZeros(totals[3]).length())) + "-" + putTwoZeros(totals[3])
+         + " $" + InvoiceUtil.generateString(" ", (10 - putTwoZeros(totals[4]).length())) + putTwoZeros(totals[4]);
+        return output + "\n\n\n\n\n\n";
     }
 
     private String getCustomerInfo() throws JSONException {
@@ -108,6 +149,16 @@ public class InvoiceSummary {
                 + "Tax" + InvoiceUtil.generateString(" ", 7) + "Total";
     }
 
+    private String getSummaryColumns() throws JSONException {
+        return "Invoice   Customer"
+                + InvoiceUtil.generateString(" ", 42) + "Salesperson"
+                + InvoiceUtil.generateString(" ", 22) + "Subtotal"
+                + InvoiceUtil.generateString(" ", 8) + "Fees"
+                + InvoiceUtil.generateString(" ", 7) + "Taxes"
+                + InvoiceUtil.generateString(" ", 4) + "Discount"
+                + InvoiceUtil.generateString(" ", 7) + "Total";
+    }
+
     private String getProductInfo() throws JSONException {
         String productString = "";
         JSONArray products = invoice.getJSONArray("products");
@@ -128,11 +179,11 @@ public class InvoiceSummary {
                     + " $" + InvoiceUtil.generateString(" ", 10 - putTwoZeros(total).length()) + putTwoZeros(total) + "\n"
                     + (secondLine.equals("") ? secondLine : InvoiceUtil.generateString(" ", 10) + secondLine + "\n");
         }
-        System.out.println(invoiceTotal);
         productString += getSubtotal()
                 + getDiscount()
                 + getAdditionalFee()
-        + getTotal();
+                + getTotal();
+        InvoiceUtil.addToInvoiceMoneyMap(invoice, new Double[] {invoiceSubtotal, invoiceFee, invoiceTax, invoiceDiscount, invoiceTotal});
         return productString +"\n";
     }
 
@@ -235,6 +286,7 @@ public class InvoiceSummary {
         } else if(InvoiceUtil.getNestedJSON(invoice, "customer", "type").equals("A")) {
             discount = .88;
         }
+        invoiceDiscount = (1 - discount) * invoiceTotal;
         invoiceTotal *= discount;
         return "DISCOUNT " + "(" + (int)(100 - (discount * 100)) + "%"
                 + (noTax ? " & NO TAX)" + InvoiceUtil.generateString(" ", 82) : ")" + InvoiceUtil.generateString(" ", (102 - ("DISCOUNT " + "(" + (int)(100 - (discount * 100))).length())))
@@ -249,6 +301,7 @@ public class InvoiceSummary {
         } else if(getCustomerType().equals("Agent")) {
             fee = 150;
         }
+        invoiceFee = fee;
         invoiceTotal += fee;
         return "ADDITIONAL FEE (" + getCustomerType() + ")"
                 + InvoiceUtil.generateString(" ", 104 - ("ADDITIONAL FEE (" + getCustomerType() + ")").length())

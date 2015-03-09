@@ -5,9 +5,20 @@ import org.json.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 public class InvoiceUtil {
+
+    private static HashMap<JSONObject, Double[]> invoiceMap = new HashMap<>();
+
+    public static HashMap<JSONObject, Double[]> getInvoiceMap() {
+        return invoiceMap;
+    }
+
+    public static void addToInvoiceMoneyMap(JSONObject invoice, Double[] info) {
+        invoiceMap.put(invoice, info);
+    }
 
     public static String generateString(String toRepeat, int number) {
         return new String(new char[number]).replace("\0", toRepeat);
