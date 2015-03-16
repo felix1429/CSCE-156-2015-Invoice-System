@@ -92,3 +92,33 @@ CREATE TABLE `Address` (
 /*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
+
+--
+-- Table structure for table `Customers`
+--
+
+DROP TABLE IF EXISTS `Customers`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+
+CREATE TABLE `Customers` (
+  `CustomerID`    INT(11)     NOT NULL AUTO_INCREMENT,
+  `AddressID` INT(11)     NOT NULL,
+  `CustomerCode`  VARCHAR(20) NOT NULL,
+  `CustomerType`  VARCHAR(2)  NOT NULL,
+  `PersonCode`    VARCHAR(20) NOT NULL,
+  `PersonID`      INT(11)     NOT NULL,
+  `CustomerName`  VARCHAR(40) NOT NULL,
+  PRIMARY KEY (`CustomerID`),
+  FOREIGN KEY (`PersonID`) REFERENCES Persons (`PersonID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  FOREIGN KEY (`AddressID`) REFERENCES Address (`AddressID`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
