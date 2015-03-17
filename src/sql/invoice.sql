@@ -188,3 +188,55 @@ CREATE TABLE `Customers` (
   DEFAULT CHARSET = utf8
   COLLATE = utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Invoice`
+--
+
+DROP TABLE IF EXISTS `Invoice`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+
+CREATE TABLE `Invoice` (
+  `InvoiceID`   int(11)     NOT NULL AUTO_INCREMENT,
+  `InvoiceCode` VARCHAR(40) NOT NULL,
+  `CustomerID`  int(11)     NOT NULL,
+  `Date`        VARCHAR(40) NOT NULL,
+  `PersonID`    int(11)     NOT NULL,
+  PRIMARY KEY (`InvoiceID`),
+  FOREIGN KEY (`CustomerID`) REFERENCES Customers (`CustomerID`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE,
+  FOREIGN KEY (`PersonID`) REFERENCES Persons (`PersonID`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Venue`
+--
+
+DROP TABLE IF EXISTS `Venue`
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+
+CREATE TABLE `Venue` (
+  `VenueID`   int(11)     NOT NULL AUTO_INCREMENT,
+  `AddressID` int(11)     NOT NULL,
+  `VenueName` VARCHAR(40) NOT NULL,
+  `VenueCapacity` int(11) NOT NULL,
+  PRIMARY KEY (`VenueID`),
+  FOREIGN KEY (`AddressID`) REFERENCES Address (`AddressID`)
+  ON DELETE CASCADE
+  ON UPDATE CASCADE
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 7
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
