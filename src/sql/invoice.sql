@@ -40,11 +40,16 @@ CREATE TABLE `Persons` (
 
 /*--LOCK TABLES `Persons` WRITE;*/;
 /*!40000 ALTER TABLE `Persons` DISABLE KEYS */;
-INSERT INTO `Persons` VALUES (1,'944c',1,'Castro','Starlin'),(2,'306a',2,'Sampson','Brock'),(3,'55bb',3,'0Brien','Miles'),(4,'2342',4,'OBrien','Miles'),
-  (5,'aef1',5,'Gekko','Gordon'),(6,'321f',6,'Fox','Bud'),(7,'ma12',7,'Sveum','Dale'),(8,'321nd',8,'Hartnell','William'),(9,'nf32a',9,'Pertwee','Jon'),
-  (10,'231',10,'Baker','Tom'),(11,'6doc',11,'Hurndall','Richard'),(12,'321dr',12,'Baker','C.'),(13,'1svndr',13,'McCoy','Sylvester'),(14,'1231st',14,'McGann','Paul'),
-  (15,'nwdoc1',15,'Ecceleston','Chris'),(16,'2ndbestd',16,'Tennant','David'),(17,'wrddoc',17,'Smith','Matt'),(18,'bbchar',18,'Ehrmantraut','Kaylee'),
-  (19,'doc05',19,'Davison','Peter');
+INSERT INTO `Persons`
+VALUES (1, '944c', 1, 'Castro', 'Starlin'), (2, '306a', 2, 'Sampson', 'Brock'), (3, '55bb', 3, '0Brien', 'Miles'),
+  (4, '2342', 4, 'OBrien', 'Miles'),
+  (5, 'aef1', 5, 'Gekko', 'Gordon'), (6, '321f', 6, 'Fox', 'Bud'), (7, 'ma12', 7, 'Sveum', 'Dale'),
+  (8, '321nd', 8, 'Hartnell', 'William'), (9, 'nf32a', 9, 'Pertwee', 'Jon'),
+  (10, '231', 10, 'Baker', 'Tom'), (11, '6doc', 11, 'Hurndall', 'Richard'), (12, '321dr', 12, 'Baker', 'C.'),
+  (13, '1svndr', 13, 'McCoy', 'Sylvester'), (14, '1231st', 14, 'McGann', 'Paul'),
+  (15, 'nwdoc1', 15, 'Ecceleston', 'Chris'), (16, '2ndbestd', 16, 'Tennant', 'David'),
+  (17, 'wrddoc', 17, 'Smith', 'Matt'), (18, 'bbchar', 18, 'Ehrmantraut', 'Kaylee'),
+  (19, 'doc05', 19, 'Davison', 'Peter');
 /*!40000 ALTER TABLE `Persons` ENABLE KEYS */;
 /*--UNLOCK TABLES;*/;
 
@@ -132,6 +137,7 @@ CREATE TABLE `Email` (
 
 /*--LOCK TABLES `Email` WRITE;*/;
 /*!40000 ALTER TABLE `Email` DISABLE KEYS */;
+<<<<<<< HEAD
 INSERT INTO `Email` VALUES(1,1,'scastro@cubs.com'),(2,1,'starlin_castro13@gmail.com'),(3,2,'brock_f_sampson@gmail.com'),(4,2,'bsampson@venture.com'),(5,3,'obrien@ds9.com'),
   (6,3,'obrien@enterprise.gov'),(7,4,''),(8,5,''),(9,6,'bfox@gmail.com'),(10,6,'csheen@crazy.net'),(11,7,'sveum@cub.com'),(12,8,'whartnell@doctors.com'),(13,8,'dr@who.com'),
   (14,9,'ptroug@cse.unl.edu'),(15,9,'ptrou32@unl.edu'),(16,10,'jpet@whofan.com'),(17,11,'famousdoc@who.com'),(18,11,'tbaker@cse.unl.edu'),(19,11,'mostfamous@whovian.com'),
@@ -215,18 +221,18 @@ DROP TABLE IF EXISTS `Invoice`;
 /*!40101 SET character_set_client = utf8 */;
 
 CREATE TABLE `Invoice` (
-  `InvoiceID`   int(11)     NOT NULL AUTO_INCREMENT,
+  `InvoiceID`   INT(11)     NOT NULL AUTO_INCREMENT,
   `InvoiceCode` VARCHAR(40) NOT NULL,
-  `CustomerID`  int(11)     NOT NULL,
+  `CustomerID`  INT(11)     NOT NULL,
   `Date`        VARCHAR(40) NOT NULL,
-  `PersonID`    int(11)     NOT NULL,
+  `PersonID`    INT(11)     NOT NULL,
   PRIMARY KEY (`InvoiceID`),
   FOREIGN KEY (`CustomerID`) REFERENCES Customers (`CustomerID`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   FOREIGN KEY (`PersonID`) REFERENCES Persons (`PersonID`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 7
@@ -240,7 +246,9 @@ CREATE TABLE `Invoice` (
 
 /*--LOCK TABLES `Invoice` WRITE;*/;
 /*!40000 ALTER TABLE `Invoice` DISABLE KEYS */;
-INSERT INTO `Invoice` VALUES (1,'INV001',1,'2014-02-03',16),(2,'INV002',2,'2014-01-10',17),(3,'INV003',3,'2014-01-29',18),(4,'INV004',4,'2014-02-16',12);
+INSERT INTO `Invoice`
+VALUES (1, 'INV001', 1, '2014-02-03', 16), (2, 'INV002', 2, '2014-01-10', 17), (3, 'INV003', 3, '2014-01-29', 18),
+  (4, 'INV004', 4, '2014-02-16', 12);
 /*!40000 ALTER TABLE `Invoice` ENABLE KEYS */;
 /*--UNLOCK TABLES;*/;
 
@@ -248,19 +256,19 @@ INSERT INTO `Invoice` VALUES (1,'INV001',1,'2014-02-03',16),(2,'INV002',2,'2014-
 -- Table structure for table `Venue`
 --
 
-DROP TABLE IF EXISTS `Venue`
+DROP TABLE IF EXISTS `Venue`;
 /*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 
 CREATE TABLE `Venue` (
-  `VenueID`   int(11)     NOT NULL AUTO_INCREMENT,
-  `AddressID` int(11)     NOT NULL,
-  `VenueName` VARCHAR(40) NOT NULL,
-  `VenueCapacity` int(11) NOT NULL,
+  `VenueID`       INT(11)     NOT NULL AUTO_INCREMENT,
+  `AddressID`     INT(11)     NOT NULL,
+  `VenueName`     VARCHAR(40) NOT NULL,
+  `VenueCapacity` INT(11)     NOT NULL,
   PRIMARY KEY (`VenueID`),
   FOREIGN KEY (`AddressID`) REFERENCES Address (`AddressID`)
-  ON DELETE CASCADE
-  ON UPDATE CASCADE
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 7
@@ -274,9 +282,12 @@ CREATE TABLE `Venue` (
 
 /*--LOCK TABLES `Venue` WRITE;*/;
 /*!40000 ALTER TABLE `Venue` DISABLE KEYS */;
-INSERT INTO 'Venue' VALUES (1,1,'Metlife Stadium',82566),(2,2,'AT&T Stadium',80000),(3,3,'Arrowhead Stadium',79541),(4,4,'Sun Life Stadium',65326),
-  (5,5,'Bank of America Stadium',73779),(6,6,'FirstEnergy Stadium',73204),(7,7,'Soldier Field',61500),(8,8,'CenturyLink Field',67135),
-  (9,9,'University of Phoenix Stadium',63400),(10,10,'Georgia Dome',71228);
+INSERT INTO 'Venue'
+VALUES (1, 1, 'Metlife Stadium', 82566), (2, 2, 'AT&T Stadium', 80000), (3, 3, 'Arrowhead Stadium', 79541),
+  (4, 4, 'Sun Life Stadium', 65326),
+  (5, 5, 'Bank of America Stadium', 73779), (6, 6, 'FirstEnergy Stadium', 73204), (7, 7, 'Soldier Field', 61500),
+  (8, 8, 'CenturyLink Field', 67135),
+  (9, 9, 'University of Phoenix Stadium', 63400), (10, 10, 'Georgia Dome', 71228);
 /*!40000 ALTER TABLE `Venue` ENABLE KEYS */;
 /*--UNLOCK TABLES;*/;
 
