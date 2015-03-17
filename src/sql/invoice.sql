@@ -14,14 +14,14 @@ USE thennig;
 -- Table structure for table `Persons`
 --
 
-DROP TABLE IF EXISTS `Persons`;
+DROP TABLE IF EXISTS `Person`;
 /*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 
 CREATE TABLE `Persons` (
   `PersonID`        INT(11)     NOT NULL AUTO_INCREMENT,
   `PersonCode`      VARCHAR(20) NOT NULL,
-  `AddressID`   INT(11)     NOT NULL,
+  `AddressID`       INT(11)     NOT NULL,
   `PersonLastName`  VARCHAR(30) NOT NULL,
   `PersonFirstName` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`PersonID`),
@@ -31,6 +31,61 @@ CREATE TABLE `Persons` (
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 21
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Product`
+--
+
+DROP TABLE IF EXISTS `Product`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+
+CREATE TABLE `Product` (
+  `ID`           INT(11)     NOT NULL AUTO_INCREMENT,
+  `GameDateTime` VARCHAR(30),
+  `Code`         VARCHAR(30) NOT NULL,
+  `VenueCode`    VARCHAR(30),
+  `Teams`        VARCHAR(45),
+  `Type`         VARCHAR(30) NOT NULL,
+  `HourlyFee`    FLOAT(15),
+  `LicenseFee`   FLOAT(15),
+  `Refreshment`  VARCHAR(30),
+  `Cost`         FLOAT(15),
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`VenueCode`) REFERENCES Venue (`Code`)
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 36
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table Structure for table `InvoiceProduct`
+--
+
+DROP TABLE IF EXISTS `InvoiceProduct`;
+/*!40101 SET @saved_cs_client = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+
+CREATE TABLE `InvoiceProduct` (
+  `ProductID`     VARCHAR(30) NOT NULL,
+  `InvoiceID`     VARCHAR(30) NOT NULL,
+  `NumberOfHours` VARCHAR(30),
+  `NumberOfUnits` VARCHAR(30),
+  `BeginDate`     VARCHAR(30),
+  `EndDate`       VARCHAR(30),
+  `Date`          VARCHAR(30),
+  `Seats`         VARCHAR(30),
+  PRIMARY KEY (`ProductID`),
+  FOREIGN KEY (`ProductID`) REFERENCES Product (`ID`),
+  FOREIGN KEY (`InvoiceID`) REFERENCES Invoice (`ID`)
+)
+  ENGINE = InnoDB
+  AUTO_INCREMENT = 36
   DEFAULT CHARSET = utf8
   COLLATE = utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -68,11 +123,11 @@ DROP TABLE IF EXISTS `Address`;
 
 CREATE TABLE `Address` (
   `AddressID` INT(11)     NOT NULL AUTO_INCREMENT,
-  `Street`        VARCHAR(30) NOT NULL,
-  `City`          VARCHAR(30) NOT NULL,
-  `CityState`     VARCHAR(30) NOT NULL,
-  `ZipCode`       VARCHAR(20) NOT NULL,
-  `Country`       VARCHAR(20) NOT NULL,
+  `Street`    VARCHAR(30) NOT NULL,
+  `City`      VARCHAR(30) NOT NULL,
+  `CityState` VARCHAR(30) NOT NULL,
+  `ZipCode`   VARCHAR(20) NOT NULL,
+  `Country`   VARCHAR(20) NOT NULL,
   PRIMARY KEY (`AddressID`)
 )
   ENGINE = InnoDB
@@ -97,18 +152,18 @@ CREATE TABLE `Address` (
 -- Table structure for table `Customers`
 --
 
-DROP TABLE IF EXISTS `Customers`;
+DROP TABLE IF EXISTS `Customer`;
 /*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 
 CREATE TABLE `Customers` (
-  `CustomerID`    INT(11)     NOT NULL AUTO_INCREMENT,
-  `AddressID` INT(11)     NOT NULL,
-  `CustomerCode`  VARCHAR(20) NOT NULL,
-  `CustomerType`  VARCHAR(2)  NOT NULL,
-  `PersonCode`    VARCHAR(20) NOT NULL,
-  `PersonID`      INT(11)     NOT NULL,
-  `CustomerName`  VARCHAR(40) NOT NULL,
+  `CustomerID`   INT(11)     NOT NULL AUTO_INCREMENT,
+  `AddressID`    INT(11)     NOT NULL,
+  `CustomerCode` VARCHAR(20) NOT NULL,
+  `CustomerType` VARCHAR(2)  NOT NULL,
+  `PersonCode`   VARCHAR(20) NOT NULL,
+  `PersonID`     INT(11)     NOT NULL,
+  `CustomerName` VARCHAR(40) NOT NULL,
   PRIMARY KEY (`CustomerID`),
   FOREIGN KEY (`PersonID`) REFERENCES Persons (`PersonID`)
     ON DELETE CASCADE
