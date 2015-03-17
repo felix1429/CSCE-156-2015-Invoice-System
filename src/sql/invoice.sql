@@ -1,4 +1,3 @@
-USE thennig;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT = @@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS = @@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION = @@COLLATION_CONNECTION */;
@@ -35,6 +34,12 @@ CREATE TABLE `Persons` (
   COLLATE = utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+  INSERT INTO `Persons` VALUES (1,'944c',1,'Castro','Starlin'),(2,'306a',2,'Sampson','Brock'),(3,'55bb',3,'0Brien','Miles'),(4,'2342',4,'OBrien','Miles'),
+  (5,'aef1',5,'Gekko','Gordon'),(6,'321f',6,'Fox','Bud'),(7,'ma12',7,'Sveum','Dale'),(8,'321nd',8,'Hartnell','William'),(9,'nf32a',9,'Pertwee','Jon'),
+  (10,'231',10,'Baker','Tom'),(11,'6doc',11,'Hurndall','Richard'),(12,'321dr',12,'Baker','C.'),(13,'1svndr',13,'McCoy','Sylvester'),(14,'1231st',14,'McGann','Paul'),
+    (15,'nwdoc1',15,'Ecceleston','Chris'),(16,'2ndbestd',16,'Tennant','David'),(17,'wrddoc',17,'Smith','Matt'),(18,'bbchar',18,'Ehrmantraut','Kaylee'),
+    (19,'doc05',19,'Davison','Peter');
+
 --
 -- Table structure for table `Email`
 --
@@ -57,6 +62,12 @@ CREATE TABLE `Email` (
   DEFAULT CHARSET = utf8
   COLLATE = utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+INSERT INTO `Email` VALUES(1,1,'scastro@cubs.com,starlin_castro13@gmail.com'),(2,2,'brock_f_sampson@gmail.com,bsampson@venture.com'),(3,3,'obrien@ds9.com,obrien@enterprise.gov'),
+  (4,4,''),(5,5,''),(6,6,'bfox@gmail.com,csheen@crazy.net'),(7,7,'sveum@cub.com'),(8,8,'whartnell@doctors.com,dr@who.com'),(9,9,'ptroug@cse.unl.edu,ptrou32@unl.edu'),
+  (10,10,'jpet@whofan.com'),(11,11,'famousdoc@who.com,tbaker@cse.unl.edu,mostfamous@whovian.com,thedoctor@bbc.com'),(12,12,'rhurndall@cse.unl.edu,richard@unl.edu'),
+  (13,13,'dr@baker.com'),(14,14,'slyguy@hotmail.com,mccoy@whofan.com'),(15,15,'pmcgann@mlb.com,foo@bar.com,pmc@unl.edu'),(16,16,'newguy@whovian.com'),
+  (17,17,'actor@shakespeare.com,tdavid@unl.com'),(18,18,'msmith@who.com,thedoc@cse.unl.edu'),(19,19,''),(20,20,'');
 
 --
 -- Table structure for table `Address`
