@@ -72,6 +72,8 @@ CREATE TABLE `Product` (
   `LicenseFee`   FLOAT(15),
   `Refreshment`  VARCHAR(30),
   `Cost`         FLOAT(15),
+  `StartDate`    VARCHAR(30),
+  `EndDate`      VARCHAR(30),
   PRIMARY KEY (`ID`),
   FOREIGN KEY (`VenueCode`) REFERENCES Venue (`Code`)
 )
@@ -80,6 +82,24 @@ CREATE TABLE `Product` (
   DEFAULT CHARSET = utf8
   COLLATE = utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+/*--LOCK TABLES `Product` WRITE;*/;
+/*!40000 ALTER TABLE `Product` DISABLE KEYS */;
+INSERT INTO `Product`
+VALUES (1, NULL, 'b29e', NULL, 'Chicago Bears', 'TS', NULL, NULL, NULL, 1238, NULL, NULL),
+  (2, NULL, 'ff23', NULL, NULL, 'SR', NULL, NULL, 'Labatt Beer - 02z', 4.99, NULL, NULL),
+  (3, '2014-02-11 13:10', 'fp12', 'st329', 'Cleveland Browns,Detroit Lions', 'TG', NULL, NULL, NULL, 187, NULL, NULL),
+  (4, NULL, '90fa', 'a001', NULL, 'SP', 35, NULL, NULL, NULL, NULL, NULL),
+  (5, '2014-02-11 15:30', '1239', 'ai10', 'Dallas Cowboys,Chicago Bears', 'TG', NULL, NULL, NULL, 340, NULL, NULL),
+  (6, '2014-04-07 10:00', '782g', 'w111', 'Seattle Seahawks,Atlanta Falcons', 'TG', NULL, NULL, NULL, 225, NULL, NULL),
+  (7, '2014-04-07 10:00', '3289', 'w111', 'Seattle Seahawks,Atlanta Falcons', 'SL', NULL, 55, NULL, 225, NULL, NULL),
+  (8, NULL, '32f4', NULL, NULL, 'SR', NULL, NULL, 'Italian Buffet', 18, NULL, NULL),
+  (9, NULL, '3y92', NULL, 'Carolina Panthers', 'TS', NULL, NULL, NULL, 231, '2014-04-07', '2014-09-29'),
+  (10, NULL, '90fb', 'ai10', NULL, 'SP', 20, NULL, NULL, NULL, NULL, NULL),
+  (11, '2014-02-11 13:10', 'xer4', 'st329', 'Cleveland Browns,Detroit Lions', 'SL', NULL, 73, NULL, 187, NULL, NULL),
+  (12, NULL, 'yp23', NULL, 'Carolina Panthers', 'SL', NULL, 39, NULL, 231, '2014-04-07', '2014-04-29');
+/*!40000 ALTER TABLE `Product` ENABLE KEYS */;
+/*--UNLOCK TABLES;*/;
 
 --
 -- Table Structure for table `InvoiceProduct`
