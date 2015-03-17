@@ -132,11 +132,12 @@ CREATE TABLE `Email` (
 
 /*--LOCK TABLES `Email` WRITE;*/;
 /*!40000 ALTER TABLE `Email` DISABLE KEYS */;
-INSERT INTO `Email` VALUES(1,1,'scastro@cubs.com,starlin_castro13@gmail.com'),(2,2,'brock_f_sampson@gmail.com,bsampson@venture.com'),(3,3,'obrien@ds9.com,obrien@enterprise.gov'),
-  (4,4,''),(5,5,''),(6,6,'bfox@gmail.com,csheen@crazy.net'),(7,7,'sveum@cub.com'),(8,8,'whartnell@doctors.com,dr@who.com'),(9,9,'ptroug@cse.unl.edu,ptrou32@unl.edu'),
-  (10,10,'jpet@whofan.com'),(11,11,'famousdoc@who.com,tbaker@cse.unl.edu,mostfamous@whovian.com,thedoctor@bbc.com'),(12,12,'rhurndall@cse.unl.edu,richard@unl.edu'),
-  (13,13,'dr@baker.com'),(14,14,'slyguy@hotmail.com,mccoy@whofan.com'),(15,15,'pmcgann@mlb.com,foo@bar.com,pmc@unl.edu'),(16,16,'newguy@whovian.com'),
-  (17,17,'actor@shakespeare.com,tdavid@unl.com'),(18,18,'msmith@who.com,thedoc@cse.unl.edu'),(19,19,''),(20,20,'');
+INSERT INTO `Email` VALUES(1,1,'scastro@cubs.com'),(2,1,'starlin_castro13@gmail.com'),(3,2,'brock_f_sampson@gmail.com'),(4,2,'bsampson@venture.com'),(5,3,'obrien@ds9.com'),
+  (6,3,'obrien@enterprise.gov'),(7,4,''),(8,5,''),(9,6,'bfox@gmail.com'),(10,6,'csheen@crazy.net'),(11,7,'sveum@cub.com'),(12,8,'whartnell@doctors.com'),(13,8,'dr@who.com'),
+  (14,9,'ptroug@cse.unl.edu'),(15,9,'ptrou32@unl.edu'),(16,10,'jpet@whofan.com'),(17,11,'famousdoc@who.com'),(18,11,'tbaker@cse.unl.edu'),(19,11,'mostfamous@whovian.com'),
+  (20,11,'thedoctor@bbc.com'),(21,12,'rhurndall@cse.unl.edu'),(22,12,'richard@unl.edu'),
+  (23,13,'dr@baker.com'),(24,14,'slyguy@hotmail.com'),(25,14,'mccoy@whofan.com'),(26,15,'pmcgann@mlb.com,foo@bar.com'),(27,15,'pmc@unl.edu'), (28,16,'newguy@whovian.com'),
+  (29,17,'actor@shakespeare.com'),(30,17,'tdavid@unl.com'),(31,18,'msmith@who.com'),(32,18,'thedoc@cse.unl.edu'),(33,19,''),(34,20,'');
 /*!40000 ALTER TABLE `Email` ENABLE KEYS */;
 /*--UNLOCK TABLES;*/;
 
