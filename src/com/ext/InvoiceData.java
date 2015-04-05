@@ -4,7 +4,6 @@ package com.ext;
  * This is a collection of utility methods that define a general API for
  * interacting with the database supporting this application.
  *
- * NOTE: DONOT CHANGE THE PACKAGE NAME OR ANY OF THE METHOD SIGNATURES
  */
 public class InvoiceData {
 
