@@ -68,7 +68,7 @@ public class InvoiceData {
         try {
             Integer personId = null;
 
-            String query = "SELECT PersonID FROM Persons WHERE PersonCode = ?";
+            String query = "SELECT PersonID FROM Person WHERE PersonCode = ?";
 
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{personCode});
             ResultSet rs = ps.executeQuery();
@@ -136,7 +136,7 @@ public class InvoiceData {
     }
 
     /**
-     * Method to add a venuerecord to the database with the provided data.
+     * Method to add a venue record to the database with the provided data.
      * @param venueCode
      * @param name
      * @param street
@@ -147,7 +147,38 @@ public class InvoiceData {
      * @param capacity
      */
     public static void addVenue(String venueCode, String name, String street,
-                                String city, String state, String zip, String country, int capacity) {}
+                                String city, String state, String zip, String country, int capacity) {
+        try {
+            Integer venueId = null;
+
+            String query = "SELECT VenueID FROM Venue WHERE VenueCode = ?";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{venueCode});
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                venueId = (Integer) rs.getObject("VenueID");
+            }
+
+            if(venueId == null) {
+                query = "INSERT INTO Address (Street, City, State, ZipCode, Country) "
+                        + "VALUES (?, ?, ?, ?, ?)";
+
+                ps = dam.prepareStatement(query, new Object[]{street, city, state, zip, country});
+                ps.executeUpdate();
+
+                query = "INSERT INTO Venue (VenueName, VenueCapacity) "
+                        + "VALUES (?, ?)";
+                ps =  dam.prepareStatement(query, new Object[]{name, capacity});
+                ps.executeUpdate();
+
+                dam.closeConnection(rs, ps);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error in method addVenue:");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Adds an email record corresponding person record corresponding to the
