@@ -101,7 +101,19 @@ public class InvoiceData {
     /**
      * Method that removes every venue record from the database
      */
-    public static void removeAllVenues() {}
+    public static void removeAllVenues() {
+        try {
+            String query = "DELETE FROM Venues";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
+            System.out.println("Error in method removeALLVenues: ");
+            e.printStackTrace();
+        }
+    }
 
 
     /**
@@ -109,7 +121,19 @@ public class InvoiceData {
      * provided personCode
      * @param venueCode
      */
-    public static void removeVenue(String venueCode) {}
+    public static void removeVenue(String venueCode) {
+        try {
+            String query = "DELETE FROM Venue WHERE VenueCode = ?";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{venueCode});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
+            System.out.println("Error in method removeVenue: ");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Method to add a venuerecord to the database with the provided data.
