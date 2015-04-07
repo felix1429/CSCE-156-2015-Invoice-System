@@ -160,7 +160,19 @@ public class InvoiceData {
     /**
      * Method that removes every customer record from the database
      */
-    public static void removeAllCustomers() {}
+    public static void removeAllCustomers() {
+        try {
+            String query = "DELETE FROM Customers";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
+            System.out.println("Error in method removeAllCustomers: ");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Method to add a customerRecord to the database with the provided data.
