@@ -149,14 +149,38 @@ public class InvoiceData {
     /**
      * Removes all product records from the database
      */
-    public static void removeAllProducts() {}
+    public static void removeAllProducts() {
+        try {
+            String query = "DELETE FROM Products";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
+            System.out.println("Error in method removeAllProducts: ");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Removes a particular product record from the database corresponding to the
      * provided productCode
      * @param assetCode
      */
-    public static void removeProduct(String productCode) {}
+    public static void removeProduct(String productCode) {
+        try {
+            String query = "DELETE FROM Product WHERE productCode = ?";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{productCode});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
+            System.out.println("Error in method removeProduct: ");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Adds an gameTicket record to the database with the
@@ -191,14 +215,38 @@ public class InvoiceData {
     /**
      * Removes all invoice records from the database
      */
-    public static void removeAllInvoices() {}
+    public static void removeAllInvoices() {
+        try {
+            String query = "DELETE FROM Invoices";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
+            System.out.println("Error in method removeAllInvoices: ");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Removes the invoice record from the database corresponding to the
      * provided invoiceCode
      * @param invoiceCode
      */
-    public static void removeInvoice(String invoiceCode) {}
+    public static void removeInvoice(String invoiceCode) {
+        try {
+            String query = "DELETE FROM Venue WHERE invoiceCode = ?";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
+            System.out.println("Error in method removeInvoice: ");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Adds an invoice record to the database with the given data.
