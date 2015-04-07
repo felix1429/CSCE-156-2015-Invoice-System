@@ -186,12 +186,50 @@ public class InvoiceData {
      * @param personCode
      * @param email
      */
-    public static void addEmail(String personCode, String email) {}
+    public static void addEmail(String personCode, String email) {
+        try {
+            Integer emailId = null;
+
+            String query = "SELECT EmailID FROM Email WHERE EmailAddress = ?";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{email});
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                emailId = (Integer) rs.getObject("EmailID");
+            }
+
+            if(emailId == null) {
+                query = "INSERT INTO Emial (EmailAddress) "
+                        + "VALUES (?)";
+
+                ps = dam.prepareStatement(query, new Object[]{personCode, email});
+                ps.executeUpdate();
+
+                dam.closeConnection(rs, ps);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error in method addEmail:");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Method that removes every customer record from the database
      */
-    public static void removeAllCustomers() {}
+    public static void removeAllCustomers() {
+        try {
+            String query = "DELETE FROM Customers";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
+            System.out.println("Error in method removeAllCustomers: ");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Method to add a customerRecord to the database with the provided data.
