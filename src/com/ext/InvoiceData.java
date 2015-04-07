@@ -3,6 +3,7 @@ package com.ext;
 import database.Driver;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -27,7 +28,7 @@ public class InvoiceData {
 
             dam.closeConnection(ps);
         } catch (SQLException e) {
-            System.out.println("Error in method removeAllPersons: ");
+            System.out.println("Error in method removeAllPersons:");
             e.printStackTrace();
         }
     }
@@ -46,7 +47,7 @@ public class InvoiceData {
 
             dam.closeConnection(ps);
         } catch (SQLException e) {
-            System.out.println("Error in method removePerson: ");
+            System.out.println("Error in method removePerson:");
             e.printStackTrace();
         }
     }
@@ -63,7 +64,39 @@ public class InvoiceData {
      * @param country
      */
     public static void addPerson(String personCode, String firstName, String lastName,
-                                 String street, String city, String state, String zip, String country) {}
+                                 String street, String city, String state, String zip, String country) {
+        try {
+            Integer personId = null;
+
+            String query = "SELECT PersonID FROM Persons WHERE PersonCode = ?";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{personCode});
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()) {
+                personId = (Integer) rs.getObject("PersonID");
+            }
+
+            if(personId == null) {
+                query = "INSERT INTO Address (Street, City, State, ZipCode, Country) "
+                    + "VALUES (?, ?, ?, ?, ?)";
+
+                ps = dam.prepareStatement(query, new Object[]{street, city, state, zip, country});
+                ps.executeUpdate();
+
+                query = "INSERT INTO Person (PersonCode, PersonLastName, PersonFirstName) "
+                        + "VALUES (?, ?, ?)";
+
+                ps = dam.prepareStatement(query, new Object[]{personCode, lastName, firstName});
+                ps.executeUpdate();
+
+                dam.closeConnection(ps);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error in method addPerson:");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Method that removes every venue record from the database
