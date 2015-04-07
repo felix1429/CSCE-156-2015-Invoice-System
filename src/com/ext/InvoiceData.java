@@ -287,8 +287,18 @@ public class InvoiceData {
      * Adds an gameTicket record to the database with the
      * provided data.
      */
-    public static void addGameTicket(String productCode, String venueCode, String dateTime, String team1Name, String team2Name, double pricePerUnit) {
-        //Trevor
+    public static void addGameTicket(String productCode, String venueCode, String dateTime,
+                                     String team1Name, String team2Name, double pricePerUnit) {
+        try {
+            String query = "INSERT INTO Product (GameDateTime, Code, VenueCode, Teams, Cost) "
+                    + "VALUES (?, ?, ?, ?, ?)";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{dateTime, productCode, venueCode, team1Name + "," + team2Name, pricePerUnit});
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error in method addGameTicket");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -320,9 +330,7 @@ public class InvoiceData {
      * provided data.
      */
     public static void addRefreshment(String productCode, String name, double cost) {
-        //Chris
         try {
-
             String query = "INSERT INTO Product (Refreshment, Cost) "
                     + "VALUES (?, ?)";
 
@@ -330,7 +338,6 @@ public class InvoiceData {
             ps.executeUpdate();
 
             dam.closeConnection(ps);
-
         } catch (SQLException e) {
             System.out.println("Error in method addRefreshment:");
             e.printStackTrace();
