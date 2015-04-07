@@ -164,7 +164,6 @@ CREATE TABLE `Email` (
 
 /*--LOCK TABLES `Email` WRITE;*/;
 /*!40000 ALTER TABLE `Email` DISABLE KEYS */;
-<<<<<<< HEAD
 INSERT INTO `Email` VALUES(1,1,'scastro@cubs.com'),(2,1,'starlin_castro13@gmail.com'),(3,2,'brock_f_sampson@gmail.com'),(4,2,'bsampson@venture.com'),(5,3,'obrien@ds9.com'),
   (6,3,'obrien@enterprise.gov'),(7,4,''),(8,5,''),(9,6,'bfox@gmail.com'),(10,6,'csheen@crazy.net'),(11,7,'sveum@cub.com'),(12,8,'whartnell@doctors.com'),(13,8,'dr@who.com'),
   (14,9,'ptroug@cse.unl.edu'),(15,9,'ptrou32@unl.edu'),(16,10,'jpet@whofan.com'),(17,11,'famousdoc@who.com'),(18,11,'tbaker@cse.unl.edu'),(19,11,'mostfamous@whovian.com'),

@@ -2,6 +2,9 @@ package com.ext;
 
 import database.Driver;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 /**
  * This is a collection of utility methods that define a general API for
  * interacting with the database supporting this application.
@@ -15,14 +18,38 @@ public class InvoiceData {
     /**
      * Method that removes every person record from the database
      */
-    public static void removeAllPersons() {}
+    public static void removeAllPersons() {
+        try {
+            String query = "DELETE FROM Persons";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
+            System.out.println("Error in method removeAllPersons: ");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Removes the person record from the database corresponding to the
      * provided personCode
      * @param personCode
      */
-    public static void removePerson(String personCode) {}
+    public static void removePerson(String personCode) {
+        try {
+            String query = "DELETE FROM Persons WHERE PersonCode = ?";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{personCode});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
+            System.out.println("Error in method removePerson: ");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * Method to add a person record to the database with the provided data.

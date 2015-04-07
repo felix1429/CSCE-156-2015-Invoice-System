@@ -68,7 +68,7 @@ public class Driver {
         return ps;
     }
 
-        public void closeConnection(ResultSet rs, PreparedStatement ps) throws SQLException {
+    public void closeConnection(ResultSet rs, PreparedStatement ps) throws SQLException {
         rs.close();
         ps.close();
         conn.close();
