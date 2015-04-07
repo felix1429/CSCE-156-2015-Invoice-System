@@ -1,6 +1,7 @@
 package com.ext;
 
 import database.Driver;
+import objects.products.services.Refreshment;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -320,6 +321,20 @@ public class InvoiceData {
      */
     public static void addRefreshment(String productCode, String name, double cost) {
         //Chris
+        try {
+
+            String query = "INSERT INTO Product (Refreshment, Cost) "
+                    + "VALUES (?, ?)";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{name, cost});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+
+        } catch (SQLException e) {
+            System.out.println("Error in method addRefreshment:");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -346,7 +361,7 @@ public class InvoiceData {
      */
     public static void removeInvoice(String invoiceCode) {
         try {
-            String query = "DELETE FROM Venue WHERE invoiceCode = ?";
+            String query = "DELETE FROM Invoice WHERE invoiceCode = ?";
 
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode});
             ps.executeUpdate();
