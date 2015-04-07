@@ -25,8 +25,8 @@ CREATE TABLE `Person` (
   `PersonFirstName` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`PersonID`),
   FOREIGN KEY (`AddressID`) REFERENCES Address (`AddressID`)
-    ON DELETE CASCADE
     ON UPDATE CASCADE
+    ON DELETE CASCADE
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 21
@@ -35,7 +35,7 @@ CREATE TABLE `Person` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `Persons`
+-- Dumping data for table `Person`
 --
 
 /*--LOCK TABLES `Persons` WRITE;*/;
@@ -146,7 +146,7 @@ DROP TABLE IF EXISTS `Email`;
 CREATE TABLE `Email` (
   `EmailID`      INT(11) NOT NULL AUTO_INCREMENT,
   `PersonID`     INT(11) NOT NULL,
-  `EmailAddress` VARCHAR(300)      DEFAULT NULL,
+  `EmailAddress` VARCHAR(300)     DEFAULT NULL,
   PRIMARY KEY (`EmailID`),
   FOREIGN KEY (`PersonID`) REFERENCES Person (`PersonID`)
     ON DELETE CASCADE
@@ -253,7 +253,7 @@ DROP TABLE IF EXISTS `Invoice`;
 /*!40101 SET character_set_client = utf8 */;
 
 CREATE TABLE `Invoice` (
-  `ID`   INT(11)     NOT NULL AUTO_INCREMENT,
+  `ID`          INT(11)     NOT NULL AUTO_INCREMENT,
   `InvoiceCode` VARCHAR(40) NOT NULL,
   `CustomerID`  INT(11)     NOT NULL,
   `Date`        VARCHAR(40) NOT NULL,
@@ -332,5 +332,3 @@ VALUES (1, 1, 'Metlife Stadium', 82566), (2, 2, 'AT&T Stadium', 80000), (3, 3, '
 /*!40101 SET CHARACTER_SET_RESULTS = @OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION = @OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES = @OLD_SQL_NOTES */;
-
-
