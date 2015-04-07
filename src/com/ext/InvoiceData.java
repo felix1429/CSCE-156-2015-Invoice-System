@@ -1,11 +1,16 @@
 package com.ext;
 
+import database.Driver;
+
 /**
  * This is a collection of utility methods that define a general API for
  * interacting with the database supporting this application.
  *
  */
 public class InvoiceData {
+
+    private static Driver dam = new Driver(
+            "jdbc:mysql://cse.unl.edu/thennig", "thennig", "LvFXo3");
 
     /**
      * Method that removes every person record from the database
@@ -14,7 +19,7 @@ public class InvoiceData {
 
     /**
      * Removes the person record from the database corresponding to the
-     * provided <code>personCode</code>
+     * provided personCode
      * @param personCode
      */
     public static void removePerson(String personCode) {}
@@ -41,7 +46,7 @@ public class InvoiceData {
 
     /**
      * Removes the venue record from the database corresponding to the
-     * provided <code>personCode</code>
+     * provided personCode
      * @param venueCode
      */
     public static void removeVenue(String venueCode) {}
@@ -62,7 +67,7 @@ public class InvoiceData {
 
     /**
      * Adds an email record corresponding person record corresponding to the
-     * provided <code>personCode</code>
+     * provided personCode
      * @param personCode
      * @param email
      */
@@ -95,7 +100,7 @@ public class InvoiceData {
 
     /**
      * Removes a particular product record from the database corresponding to the
-     * provided <code>productCode</code>
+     * provided productCode
      * @param assetCode
      */
     public static void removeProduct(String productCode) {}
@@ -137,7 +142,7 @@ public class InvoiceData {
 
     /**
      * Removes the invoice record from the database corresponding to the
-     * provided <code>invoiceCode</code>
+     * provided invoiceCode
      * @param invoiceCode
      */
     public static void removeInvoice(String invoiceCode) {}
@@ -148,36 +153,36 @@ public class InvoiceData {
     public static void addInvoice(String invoiceCode, String customerCode, String salesPersonCode, String invoiceDate) {}
 
     /**
-     * Adds a particular gameticket (corresponding to <code>productCode</code> to an
-     * invoice corresponding to the provided <code>invoiceCode</code> with the given
+     * Adds a particular gameticket (corresponding to productCode to an
+     * invoice corresponding to the provided invoiceCode with the given
      * number of units
      */
     public static void addGameTicketToInvoice(String invoiceCode, String productCode, int numUnits) {}
 
     /**
-     * Adds a particular seasonpass (corresponding to <code>productCode</code> to an
-     * invoice corresponding to the provided <code>invoiceCode</code> with the given
+     * Adds a particular seasonpass (corresponding to productCode to an
+     * invoice corresponding to the provided invoiceCode with the given
      * begin/end dates
      */
     public static void addSeasonPassToInvoice(String invoiceCode, String productCode, String startDate, int quantity){}
 
     /**
-     * Adds a particular Parkingpass (corresponding to <code>productCode</code> to an
-     * invoice corresponding to the provided <code>invoiceCode</code> with the given
+     * Adds a particular Parkingpass (corresponding to productCode to an
+     * invoice corresponding to the provided invoiceCode with the given
      * number of quantity.
      */
     public static void addParkingPassToInvoice(String invoiceCode, String productCode, String validDate, int quantity, int noOfHours) {}
 
     /**
-     * Adds a particular PSL (corresponding to <code>productCode</code> to an
-     * invoice corresponding to the provided <code>invoiceCode</code> with the given
+     * Adds a particular PSL (corresponding to productCode to an
+     * invoice corresponding to the provided invoiceCode with the given
      * number of quantity.
      */
     public static void addPSLToInvoice(String invoiceCode, String productCode, int quantity, String[] seats) {}
 
     /**
-     * Adds a particular refreshment (corresponding to <code>productCode</code> to an
-     * invoice corresponding to the provided <code>invoiceCode</code> with the given
+     * Adds a particular refreshment (corresponding to productCode to an
+     * invoice corresponding to the provided invoiceCode with the given
      * number of quantity.
      */
     public static void addRefreshmentToInvoice(String invoiceCode, String productCode, int quantity) {}

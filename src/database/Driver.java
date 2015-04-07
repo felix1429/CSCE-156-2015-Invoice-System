@@ -10,7 +10,7 @@ public class Driver {
 
     private static Connection conn;
 
-    public DatabaseAccessModel(String url, String username, String password) {
+    public Driver(String url, String username, String password) {
         this.url = url;
         this.username = username;
         this.password = password;
@@ -45,13 +45,27 @@ public class Driver {
         return conn;
     }
 
-    public PreparedStatement prepareStatement(String query,  Object args[]) {
-        try {
-            PreparedStatement ps = conn.prepareStatement(query);
-        } catch (SQLException e){
-            System.out.println("SQLException: ");
-            e.printStackTrace();
+    public PreparedStatement prepareStatement(String query,  Object args[]) throws SQLException {
+        PreparedStatement ps = conn.prepareStatement(query);
+        int counter = 1;
+        for(Object o : args) {
+            try {
+                System.out.println(o);
+                int i = Integer.parseInt(String.valueOf(o));
+                System.out.println("int   " + i);
+                ps.setInt(counter, i);
+            } catch (NumberFormatException e) {
+                System.out.println("String  " + o);
+                ps.setString(counter, String.valueOf(o));
+            } catch (ClassCastException exp) {
+                Float f = new Float(o.toString());
+                System.out.println("Float  " + f);
+                ps.setFloat(counter, f);
+            }
+            counter++;
         }
+        System.out.println(ps.toString());
+        return ps;
     }
 
         public void closeConnection(ResultSet rs, PreparedStatement ps) throws SQLException {
