@@ -305,6 +305,20 @@ public class InvoiceData {
      */
     public static void addParkingPass(String productCode, String venueCode, double costPerHour) {
         //Chris
+        try {
+
+            String query = "INSERT INTO Product (ProductCode, VenueCode, CostPerHour) "
+                    + "VALUES (?, ?, ?)";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{productCode, venueCode, costPerHour});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+
+        } catch (SQLException e) {
+            System.out.println("Error in method addParkingPass:");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -313,6 +327,20 @@ public class InvoiceData {
      */
     public static void addPSL(String productCode, String ticketCode, double licenseFee) {
         //Chris
+        try {
+
+            String query = "INSERT INTO Product (ProductCode, TicketCode, LicenseFee) "
+                    + "VALUES (?, ?, ?)";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{productCode, ticketCode, licenseFee});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+
+        } catch (SQLException e) {
+            System.out.println("Error in method addPSL:");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -323,10 +351,10 @@ public class InvoiceData {
         //Chris
         try {
 
-            String query = "INSERT INTO Product (Refreshment, Cost) "
-                    + "VALUES (?, ?)";
+            String query = "INSERT INTO Product (ProductCode, Refreshment, Cost) "
+                    + "VALUES (?, ?, ?)";
 
-            PreparedStatement ps = dam.prepareStatement(query, new Object[]{name, cost});
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{productCode, name, cost});
             ps.executeUpdate();
 
             dam.closeConnection(ps);
