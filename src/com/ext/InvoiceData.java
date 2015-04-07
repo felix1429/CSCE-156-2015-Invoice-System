@@ -251,7 +251,36 @@ public class InvoiceData {
      */
     public static void addCustomer(String customerCode, String customerType, String primaryContactPersonCode, String name,
                                    String street, String city, String state, String zip, String country) {
+        try {
+                Integer customerId = null;
 
+                String query = "SELECT CustomerId FROM Customer WHERE CustomerCode = ?";
+
+                PreparedStatement ps = dam.prepareStatement(query, new Object[]{customerCode});
+                ResultSet rs = ps.executeQuery();
+
+                while(rs.next()) {
+                    customerId = (Integer) rs.getObject("CustomerID");
+                }
+            query = "INSERT INTO Address (street, city, state, zip, country) "
+                    + "VALUES (?, ?, ?, ?, ?)";
+
+            ps = dam.prepareStatement(query, new Object[]{street, city, state, zip, country});
+            ps.executeUpdate();
+
+            if (customerId == null) {
+                query = "INSERT INTO Customer (customerCode, customerType, primaryContactPersonCode, name) "
+                        + "VALUES (?, ?, ?, ?)";
+
+                ps = dam.prepareStatement(query, new Object[]{customerCode, customerType, primaryContactPersonCode, name});
+                ps.executeUpdate();
+
+            }
+            dam.closeConnection(rs, ps);
+        }catch (SQLException e) {
+            System.out.println("Error in method addCustomer:");
+            e.printStackTrace();
+        }
     }
 
     /**
