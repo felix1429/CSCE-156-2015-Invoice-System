@@ -266,7 +266,7 @@ public class InvoiceData {
     /**
      * Removes a particular product record from the database corresponding to the
      * provided productCode
-     * @param assetCode
+     * @param productCode
      */
     public static void removeProduct(String productCode) {
         try {
@@ -286,31 +286,41 @@ public class InvoiceData {
      * Adds an gameTicket record to the database with the
      * provided data.
      */
-    public static void addGameTicket(String productCode, String venueCode, String dateTime, String team1Name, String team2Name, double pricePerUnit) {	}
+    public static void addGameTicket(String productCode, String venueCode, String dateTime, String team1Name, String team2Name, double pricePerUnit) {
+        //Trevor
+    }
 
     /**
      * Adds a seasonPass record to the database with the
      * provided data.
      */
-    public static void addSeasonPass(String productCode, String teamName, String seasonStartDate, String seasonEndDate, double cost) {}
+    public static void addSeasonPass(String productCode, String teamName, String seasonStartDate, String seasonEndDate, double cost) {
+        //Trevor
+    }
 
     /**
      * Adds a ParkingPass record to the database with the
      * provided data.
      */
-    public static void addParkingPass(String productCode, String venueCode, double costPerHour) {}
+    public static void addParkingPass(String productCode, String venueCode, double costPerHour) {
+        //Chris
+    }
 
     /**
      * Adds a PSL record to the database with the
      * provided data.
      */
-    public static void addPSL(String productCode, String ticketCode, double licenseFee) {}
+    public static void addPSL(String productCode, String ticketCode, double licenseFee) {
+        //Chris
+    }
 
     /**
      * Adds a refreshment record to the database with the
      * provided data.
      */
-    public static void addRefreshment(String productCode, String name, double cost) {}
+    public static void addRefreshment(String productCode, String name, double cost) {
+        //Chris
+    }
 
     /**
      * Removes all invoice records from the database
@@ -351,40 +361,52 @@ public class InvoiceData {
     /**
      * Adds an invoice record to the database with the given data.
      */
-    public static void addInvoice(String invoiceCode, String customerCode, String salesPersonCode, String invoiceDate) {}
+    public static void addInvoice(String invoiceCode, String customerCode, String salesPersonCode, String invoiceDate) {
+        //Trevor
+    }
 
     /**
      * Adds a particular gameticket (corresponding to productCode to an
      * invoice corresponding to the provided invoiceCode with the given
      * number of units
      */
-    public static void addGameTicketToInvoice(String invoiceCode, String productCode, int numUnits) {}
+    public static void addGameTicketToInvoice(String invoiceCode, String productCode, int numUnits) {
+        //Chris
+    }
 
     /**
      * Adds a particular seasonpass (corresponding to productCode to an
      * invoice corresponding to the provided invoiceCode with the given
      * begin/end dates
      */
-    public static void addSeasonPassToInvoice(String invoiceCode, String productCode, String startDate, int quantity){}
+    public static void addSeasonPassToInvoice(String invoiceCode, String productCode, String startDate, int quantity){
+        //Trevor
+    }
 
     /**
      * Adds a particular Parkingpass (corresponding to productCode to an
      * invoice corresponding to the provided invoiceCode with the given
      * number of quantity.
      */
-    public static void addParkingPassToInvoice(String invoiceCode, String productCode, String validDate, int quantity, int noOfHours) {}
+    public static void addParkingPassToInvoice(String invoiceCode, String productCode, String validDate, int quantity, int noOfHours) {
+        //Chris
+    }
 
     /**
      * Adds a particular PSL (corresponding to productCode to an
      * invoice corresponding to the provided invoiceCode with the given
      * number of quantity.
      */
-    public static void addPSLToInvoice(String invoiceCode, String productCode, int quantity, String[] seats) {}
+    public static void addPSLToInvoice(String invoiceCode, String productCode, int quantity, String[] seats) {
+        //Trevor
+    }
 
     /**
      * Adds a particular refreshment (corresponding to productCode to an
      * invoice corresponding to the provided invoiceCode with the given
      * number of quantity.
      */
-    public static void addRefreshmentToInvoice(String invoiceCode, String productCode, int quantity) {}
+    public static void addRefreshmentToInvoice(String invoiceCode, String productCode, int quantity) {
+        //Chris
+    }
 }
