@@ -252,16 +252,16 @@ public class InvoiceData {
     public static void addCustomer(String customerCode, String customerType, String primaryContactPersonCode, String name,
                                    String street, String city, String state, String zip, String country) {
         try {
-                Integer customerId = null;
+            Integer customerId = null;
 
-                String query = "SELECT CustomerId FROM Customer WHERE CustomerCode = ?";
+            String query = "SELECT CustomerId FROM Customer WHERE CustomerCode = ?";
 
-                PreparedStatement ps = dam.prepareStatement(query, new Object[]{customerCode});
-                ResultSet rs = ps.executeQuery();
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{customerCode});
+            ResultSet rs = ps.executeQuery();
 
-                while(rs.next()) {
-                    customerId = (Integer) rs.getObject("CustomerID");
-                }
+            while (rs.next()) {
+                customerId = (Integer) rs.getObject("CustomerID");
+            }
             query = "INSERT INTO Address (street, city, state, zip, country) "
                     + "VALUES (?, ?, ?, ?, ?)";
 
@@ -277,7 +277,7 @@ public class InvoiceData {
 
             }
             dam.closeConnection(rs, ps);
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Error in method addCustomer:");
             e.printStackTrace();
         }
@@ -343,7 +343,16 @@ public class InvoiceData {
      * provided data.
      */
     public static void addSeasonPass(String productCode, String teamName, String seasonStartDate, String seasonEndDate, double cost) {
-        //Trevor
+        try {
+            String query = "INSERT INTO Product (Code, Teams, Cost, StartDate, EndDate) "
+                    + "VALUES (?, ?, ?, ?, ?)";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{productCode, teamName, cost, seasonStartDate, seasonEndDate});
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error in method addSeasonPass");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -449,8 +458,14 @@ public class InvoiceData {
      */
     public static void addInvoice(String invoiceCode, String customerCode, String salesPersonCode, String invoiceDate) {
         try {
-            String query = "INSERT INTO Invoice VALUES (InvoiceCode, CustomerCode, Date, PersonCode)";
-        } catch (SQLException e ) {
+            String query = "INSERT INTO Invoice (InvoiceCode, CustomerCode, Date, PersonCode) "
+                    + "VALUES (?, ?, ?, ?)";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, customerCode, invoiceDate, salesPersonCode});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+        } catch (SQLException e) {
             System.out.println("Error in method addInvoice:");
             e.printStackTrace();
         }
