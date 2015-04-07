@@ -197,6 +197,21 @@ CREATE TABLE `Address` (
   COLLATE = utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+INSERT INTO `Address` VALUES(1,'1 MetLife Stadium Drive','East Rutherford','NJ','07073','USA'),(2,'1 AT&T Way','Arlington','TX','76011','USA'),
+  (3,'1 Arrowhead Drive','Kansas City','MO','64129','USA'),(4,'347 Don Shula Dr','Miami Gardens','FL','33056','USA'),
+  (5,'800 South Mint Street','Charlotte','NC','28202','USA'),(6,'100 Alfred Lerner Way','Cleveland','OH','44114','USA'),
+  (7,'1410 Museum Campus Drive','Chicago','IL','60605','USA'),(8,'800 Occidental Avenue South','Seattle','WA','98134','USA'),
+  (9,'1 Cardinals Drive','Glendale','AZ','85305','USA'),(10,'1 Georgia Dome Drive Northwest','Atlanta','GA','30313','USA'),
+  (11,'1060 West Addison Street','Chicago','IL','60613','USA'),(12,'123 N 1st Street','Omaha','NE','68116','USA'),(13,'8753 West 3rd Ave.','Dallas','TX','75001','USA'),
+  (14,'123 Friendly St','Ottawa','ON','K1A 0G9','Canada'),(15,'1 Wall Street','New York','NY','10005-0012','USA'),(16,'321 Bronx Street','New York','NY','10004','USA'),
+  (17,'1060 West Addison Street','Chicago','IL','60613','USA'),(18,'1060 West Addison Street','Chicago','IL','60613','USA'),
+  (19,'301 Front St W','Toronto','ON','M5V 2T6','Canada'),(20,'1 Blue Jays Way','Toronto','ON','M5V 1J1','Canada'),(21,'Campos E1290','Mexico City','FD','NULL','Mexico'),
+  (22,'Avery Hall','Lincoln','NE','68503','USA'),(23,'126-01 Roosevelt Ave','Flushing','NY','11368','USA'),(24,'1 Metlife Stadium Dr','East Rutherford','NJ','07073','USA'),
+  (25,'1 E 161st St','Bronx','NY','10451','USA'),(26,'700 E Grand Ave','Chicago','IL','60611','USA'),(27,'800 West 7th Street','Albuquerque','NM','87105','USA'),
+  (28,'123 Cabo San Lucas','Los Cabos','BCS',' ','Mexico'),(29,'259 Concorde Suites','Lincoln','NE','68588-0115','USA'),(30,'184 Marvel Way','New York','NY','10453','USA'),
+  (31,'123 Venture Way','Culver City','CA','90230','USA'),(32,'9800 Savage Rd','Fort Meade','MD','20755','USA'),(33,'1060 West Addison','Chicago','IL','60601','USA'),
+  (34,'456 West 7th St.','Omaha','NE','68500','USA')
+
 /*--UNLOCK TABLES;*/;
 
 --
