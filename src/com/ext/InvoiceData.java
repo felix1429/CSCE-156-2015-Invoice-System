@@ -415,6 +415,20 @@ public class InvoiceData {
      */
     public static void addGameTicketToInvoice(String invoiceCode, String productCode, int numUnits) {
         //Chris
+        try {
+
+            String query = "INSERT INTO InvoiceProduct (invoiceCode, productCode, numUnits) "
+                    + "VALUES (?, ?, ?)";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, numUnits});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+
+        } catch (SQLException e) {
+            System.out.println("Error in method addGameTicketToInvoice:");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -433,6 +447,20 @@ public class InvoiceData {
      */
     public static void addParkingPassToInvoice(String invoiceCode, String productCode, String validDate, int quantity, int noOfHours) {
         //Chris
+        try {
+
+            String query = "INSERT INTO InvoiceProduct (invoiceCode, productCode, validDate, quantity, noOfHours) "
+                    + "VALUES (?, ?, ?, ?, ?)";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, validDate, quantity, noOfHours});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+
+        } catch (SQLException e) {
+            System.out.println("Error in method addParkingPassToInvoice:");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -451,5 +479,19 @@ public class InvoiceData {
      */
     public static void addRefreshmentToInvoice(String invoiceCode, String productCode, int quantity) {
         //Chris
+        try {
+
+            String query = "INSERT INTO InvoiceProduct (invoiceCode, productCode, quantity) "
+                    + "VALUES (?, ?, ?)";
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, quantity});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+
+        } catch (SQLException e) {
+            System.out.println("Error in method addRefreshmentToInvoice:");
+            e.printStackTrace();
+        }
     }
 }
