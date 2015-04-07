@@ -10,7 +10,6 @@ import java.sql.SQLException;
 /**
  * This is a collection of utility methods that define a general API for
  * interacting with the database supporting this application.
- *
  */
 public class InvoiceData {
 
@@ -37,6 +36,7 @@ public class InvoiceData {
     /**
      * Removes the person record from the database corresponding to the
      * provided personCode
+     *
      * @param personCode
      */
     public static void removePerson(String personCode) {
@@ -55,6 +55,7 @@ public class InvoiceData {
 
     /**
      * Method to add a person record to the database with the provided data.
+     *
      * @param personCode
      * @param firstName
      * @param lastName
@@ -74,13 +75,13 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{personCode});
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 personId = (Integer) rs.getObject("PersonID");
             }
 
-            if(personId == null) {
+            if (personId == null) {
                 query = "INSERT INTO Address (Street, City, State, ZipCode, Country) "
-                    + "VALUES (?, ?, ?, ?, ?)";
+                        + "VALUES (?, ?, ?, ?, ?)";
 
                 ps = dam.prepareStatement(query, new Object[]{street, city, state, zip, country});
                 ps.executeUpdate();
@@ -120,6 +121,7 @@ public class InvoiceData {
     /**
      * Removes the venue record from the database corresponding to the
      * provided personCode
+     *
      * @param venueCode
      */
     public static void removeVenue(String venueCode) {
@@ -138,6 +140,7 @@ public class InvoiceData {
 
     /**
      * Method to add a venue record to the database with the provided data.
+     *
      * @param venueCode
      * @param name
      * @param street
@@ -157,11 +160,11 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{venueCode});
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 venueId = (Integer) rs.getObject("VenueID");
             }
 
-            if(venueId == null) {
+            if (venueId == null) {
                 query = "INSERT INTO Address (Street, City, State, ZipCode, Country) "
                         + "VALUES (?, ?, ?, ?, ?)";
 
@@ -170,7 +173,7 @@ public class InvoiceData {
 
                 query = "INSERT INTO Venue (VenueName, VenueCapacity) "
                         + "VALUES (?, ?)";
-                ps =  dam.prepareStatement(query, new Object[]{name, capacity});
+                ps = dam.prepareStatement(query, new Object[]{name, capacity});
                 ps.executeUpdate();
 
                 dam.closeConnection(rs, ps);
@@ -184,6 +187,7 @@ public class InvoiceData {
     /**
      * Adds an email record corresponding person record corresponding to the
      * provided personCode
+     *
      * @param personCode
      * @param email
      */
@@ -196,11 +200,11 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{email});
             ResultSet rs = ps.executeQuery();
 
-            while(rs.next()) {
+            while (rs.next()) {
                 emailId = (Integer) rs.getObject("EmailID");
             }
 
-            if(emailId == null) {
+            if (emailId == null) {
                 query = "INSERT INTO Emial (EmailAddress) "
                         + "VALUES (?)";
 
@@ -234,6 +238,7 @@ public class InvoiceData {
 
     /**
      * Method to add a customerRecord to the database with the provided data.
+     *
      * @param customerCode
      * @param customerType
      * @param primaryContactPersonCode
@@ -245,7 +250,9 @@ public class InvoiceData {
      * @param country
      */
     public static void addCustomer(String customerCode, String customerType, String primaryContactPersonCode, String name,
-                                   String street, String city, String state, String zip, String country) {}
+                                   String street, String city, String state, String zip, String country) {
+
+    }
 
     /**
      * Removes all product records from the database
@@ -267,6 +274,7 @@ public class InvoiceData {
     /**
      * Removes a particular product record from the database corresponding to the
      * provided productCode
+     *
      * @param productCode
      */
     public static void removeProduct(String productCode) {
@@ -314,7 +322,6 @@ public class InvoiceData {
      * provided data.
      */
     public static void addParkingPass(String productCode, String venueCode, double costPerHour) {
-        //Chris
         try {
 
             String query = "INSERT INTO Product (ProductCode, VenueCode, CostPerHour) "
@@ -336,7 +343,6 @@ public class InvoiceData {
      * provided data.
      */
     public static void addPSL(String productCode, String ticketCode, double licenseFee) {
-        //Chris
         try {
 
             String query = "INSERT INTO Product (ProductCode, TicketCode, LicenseFee) "
@@ -392,6 +398,7 @@ public class InvoiceData {
     /**
      * Removes the invoice record from the database corresponding to the
      * provided invoiceCode
+     *
      * @param invoiceCode
      */
     public static void removeInvoice(String invoiceCode) {
@@ -412,7 +419,12 @@ public class InvoiceData {
      * Adds an invoice record to the database with the given data.
      */
     public static void addInvoice(String invoiceCode, String customerCode, String salesPersonCode, String invoiceDate) {
-        //Trevor
+        try {
+            String query = "INSERT INTO Invoice VALUES (InvoiceCode, CustomerCode, Date, PersonCode)";
+        } catch (SQLException e ) {
+            System.out.println("Error in method addInvoice:");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -421,10 +433,8 @@ public class InvoiceData {
      * number of units
      */
     public static void addGameTicketToInvoice(String invoiceCode, String productCode, int numUnits) {
-        //Chris
         try {
-
-            String query = "INSERT INTO InvoiceProduct (invoiceCode, productCode, numUnits) "
+            String query = "INSERT INTO InvoiceProduct (ProductCode, InvoiceCode, NumberOfUnits) "
                     + "VALUES (?, ?, ?)";
 
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, numUnits});
@@ -443,8 +453,19 @@ public class InvoiceData {
      * invoice corresponding to the provided invoiceCode with the given
      * begin/end dates
      */
-    public static void addSeasonPassToInvoice(String invoiceCode, String productCode, String startDate, int quantity){
-        //Trevor
+    public static void addSeasonPassToInvoice(String invoiceCode, String productCode, String startDate, int quantity) {
+        try {
+            String query = "INSERT INTO InvoiceProduct (ProductCode, InvoiceCode, StartDate, NumberOfUnits"
+                    + "VALUES (?, ?, ?, ?)";
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, startDate, quantity});
+            ps.executeUpdate();
+
+            dam.closeConnection(ps);
+
+        } catch (SQLException e) {
+            System.out.println("Error in method addGameTicketToInvoice:");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -453,7 +474,6 @@ public class InvoiceData {
      * number of quantity.
      */
     public static void addParkingPassToInvoice(String invoiceCode, String productCode, String validDate, int quantity, int noOfHours) {
-        //Chris
         try {
 
             String query = "INSERT INTO InvoiceProduct (invoiceCode, productCode, validDate, quantity, noOfHours) "
@@ -476,7 +496,20 @@ public class InvoiceData {
      * number of quantity.
      */
     public static void addPSLToInvoice(String invoiceCode, String productCode, int quantity, String[] seats) {
-        //Trevor
+        try {
+            String query = "INSERT INTO InvoiceProduct (InvoiceCode, ProductCode, NumberOfUnits, Seats) "
+                    + "VALUES (?, ?, ?, ?)";
+
+            String seatsString = "";
+            for (String seat : seats) {
+                seatsString += (seat + ",");
+            }
+
+            PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, quantity, seatsString});
+        } catch (SQLException e) {
+            System.out.println("Error in method addPSLToInvoice:");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -485,10 +518,9 @@ public class InvoiceData {
      * number of quantity.
      */
     public static void addRefreshmentToInvoice(String invoiceCode, String productCode, int quantity) {
-        //Chris
         try {
 
-            String query = "INSERT INTO InvoiceProduct (invoiceCode, productCode, quantity) "
+            String query = "INSERT INTO InvoiceProduct (InvoiceCode, ProductCode, NumberOfUnits) "
                     + "VALUES (?, ?, ?)";
 
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, quantity});
