@@ -1,7 +1,6 @@
 package com.ext;
 
 import database.Driver;
-import objects.products.services.Refreshment;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +25,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method removeAllPersons:");
             e.printStackTrace();
@@ -46,7 +45,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{personCode});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method removePerson:");
             e.printStackTrace();
@@ -92,7 +91,7 @@ public class InvoiceData {
                 ps = dam.prepareStatement(query, new Object[]{personCode, lastName, firstName});
                 ps.executeUpdate();
 
-                dam.closeConnection(ps);
+                
             }
         } catch (SQLException e) {
             System.out.println("Error in method addPerson:");
@@ -110,7 +109,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method removeALLVenues: ");
             e.printStackTrace();
@@ -131,7 +130,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{venueCode});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method removeVenue: ");
             e.printStackTrace();
@@ -176,7 +175,7 @@ public class InvoiceData {
                 ps = dam.prepareStatement(query, new Object[]{name, capacity});
                 ps.executeUpdate();
 
-                dam.closeConnection(rs, ps);
+                
             }
         } catch (SQLException e) {
             System.out.println("Error in method addVenue:");
@@ -211,7 +210,7 @@ public class InvoiceData {
                 ps = dam.prepareStatement(query, new Object[]{personCode, email});
                 ps.executeUpdate();
 
-                dam.closeConnection(rs, ps);
+                
             }
         } catch (SQLException e) {
             System.out.println("Error in method addEmail:");
@@ -229,7 +228,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method removeAllCustomers: ");
             e.printStackTrace();
@@ -276,7 +275,7 @@ public class InvoiceData {
                 ps.executeUpdate();
 
             }
-            dam.closeConnection(rs, ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method addCustomer:");
             e.printStackTrace();
@@ -293,7 +292,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method removeAllProducts: ");
             e.printStackTrace();
@@ -313,7 +312,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{productCode});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method removeProduct: ");
             e.printStackTrace();
@@ -368,7 +367,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{productCode, venueCode, costPerHour});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
 
         } catch (SQLException e) {
             System.out.println("Error in method addParkingPass:");
@@ -389,7 +388,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{productCode, ticketCode, licenseFee});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
 
         } catch (SQLException e) {
             System.out.println("Error in method addPSL:");
@@ -409,7 +408,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{productCode, name, cost});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method addRefreshment:");
             e.printStackTrace();
@@ -421,12 +420,12 @@ public class InvoiceData {
      */
     public static void removeAllInvoices() {
         try {
-            String query = "DELETE FROM Invoices";
+            String query = "DELETE FROM Invoice";
 
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method removeAllInvoices: ");
             e.printStackTrace();
@@ -446,7 +445,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method removeInvoice: ");
             e.printStackTrace();
@@ -464,7 +463,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, customerCode, invoiceDate, salesPersonCode});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
         } catch (SQLException e) {
             System.out.println("Error in method addInvoice:");
             e.printStackTrace();
@@ -484,7 +483,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, numUnits});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
 
         } catch (SQLException e) {
             System.out.println("Error in method addGameTicketToInvoice:");
@@ -504,7 +503,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, startDate, quantity});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
 
         } catch (SQLException e) {
             System.out.println("Error in method addGameTicketToInvoice:");
@@ -526,7 +525,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, validDate, quantity, noOfHours});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
 
         } catch (SQLException e) {
             System.out.println("Error in method addParkingPassToInvoice:");
@@ -570,7 +569,7 @@ public class InvoiceData {
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, quantity});
             ps.executeUpdate();
 
-            dam.closeConnection(ps);
+            
 
         } catch (SQLException e) {
             System.out.println("Error in method addRefreshmentToInvoice:");
