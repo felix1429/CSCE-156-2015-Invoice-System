@@ -1,7 +1,5 @@
 package sorting;
 
-import com.sun.xml.internal.ws.api.server.SDDocument;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 

@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class SortingData {
-    private static ArrayList<String[]> names = new ArrayList<String[]>();
+    private static ArrayList<String[]> names = new ArrayList<>();
 
     private static Driver dam = new Driver(
             "jdbc:mysql://cse.unl.edu/thennig", "thennig", "LvFXo3");
@@ -35,7 +35,7 @@ public class SortingData {
 
     public static ArrayList<String[]> getCustomerTypes() throws SQLException {
 
-        ArrayList<String[]> customerTypes = new ArrayList<String[]>();
+        ArrayList<String[]> customerTypes = new ArrayList<>();
 
         String query = "SELECT DISTINCT CustomerType, InvoiceCode, PersonLastName, PersonFirstName"
                 + " FROM Customers JOIN Invoices"
@@ -53,5 +53,10 @@ public class SortingData {
         dam.closeConnection(rs, ps);
 
         return customerTypes;
+    }
+
+    public static ArrayList<String[]> getTotals() throws SQLException {
+        ArrayList<String[]> totals = new ArrayList<>();
+        return totals;
     }
 }
