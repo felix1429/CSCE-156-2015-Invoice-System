@@ -25,8 +25,8 @@ CREATE TABLE `Person` (
   `PersonFirstName` VARCHAR(30) NOT NULL,
   PRIMARY KEY (`PersonID`),
   FOREIGN KEY (`AddressID`) REFERENCES Address (`AddressID`)
-    ON UPDATE CASCADE
     ON DELETE CASCADE
+    ON UPDATE CASCADE
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 21
@@ -38,7 +38,7 @@ CREATE TABLE `Person` (
 -- Dumping data for table `Person`
 --
 
-/*--LOCK TABLES `Persons` WRITE;*/;
+/*--LOCK TABLES `Person` WRITE;*/;
 /*!40000 ALTER TABLE `Person` DISABLE KEYS */;
 INSERT INTO `Person`
 VALUES (1, '944c', 1, 'Castro', 'Starlin'), (2, '306a', 2, 'Sampson', 'Brock'), (3, '55bb', 3, '0Brien', 'Miles'),
@@ -65,7 +65,7 @@ CREATE TABLE `Product` (
   `ID`           INT(11)     NOT NULL AUTO_INCREMENT,
   `GameDateTime` VARCHAR(30),
   `Code`         VARCHAR(30) NOT NULL,
-  `VenueCode`    VARCHAR(30),
+  `VenueCode`    VARCHAR(40),
   `Teams`        VARCHAR(45),
   `Type`         VARCHAR(30) NOT NULL,
   `HourlyFee`    FLOAT(15),
@@ -75,7 +75,7 @@ CREATE TABLE `Product` (
   `StartDate`    VARCHAR(30),
   `EndDate`      VARCHAR(30),
   PRIMARY KEY (`ID`),
-  FOREIGN KEY (`VenueCode`) REFERENCES Venue (`Code`)
+  FOREIGN KEY (`VenueCode`) REFERENCES Venue (`VenueCode`)
 )
   ENGINE = InnoDB
   AUTO_INCREMENT = 36
@@ -132,7 +132,7 @@ CREATE TABLE `InvoiceProduct` (
 /*!40000 ALTER TABLE `InvoiceProduct` DISABLE KEYS */;
 INSERT INTO `InvoiceProduct`
 VALUES (1, 1, NULL, NULL, '2014-01-01', '2014-05-31', NULL, NULL);
-/*!40000 ALTER TABLE `Product` ENABLE KEYS */;
+/*!40000 ALTER TABLE `InvoiceProduct` ENABLE KEYS */;
 /*--UNLOCK TABLES;*/;
 
 --
@@ -145,8 +145,8 @@ DROP TABLE IF EXISTS `Email`;
 
 CREATE TABLE `Email` (
   `EmailID`      INT(11) NOT NULL AUTO_INCREMENT,
-  `PersonCode`   INT(11) NOT NULL,
-  `EmailAddress` VARCHAR(300)     DEFAULT NULL,
+  `PersonCode`   VARCHAR(20) NOT NULL,
+  `EmailAddress` VARCHAR(400)     DEFAULT NULL,
   PRIMARY KEY (`EmailID`),
   FOREIGN KEY (`PersonCode`) REFERENCES Person (`PersonCode`)
     ON DELETE CASCADE
@@ -250,7 +250,6 @@ CREATE TABLE `Customer` (
   `CustomerCode` VARCHAR(20) NOT NULL,
   `CustomerType` VARCHAR(2)  NOT NULL,
   `PersonCode`   VARCHAR(20) NOT NULL,
-  `PersonID`     INT(11)     NOT NULL,
   `CustomerName` VARCHAR(40) NOT NULL,
   PRIMARY KEY (`CustomerID`),
   FOREIGN KEY (`PersonCode`) REFERENCES Person (`PersonCode`)

@@ -519,7 +519,7 @@ public class InvoiceData {
     public static void addParkingPassToInvoice(String invoiceCode, String productCode, String validDate, int quantity, int noOfHours) {
         try {
 
-            String query = "INSERT INTO InvoiceProduct (invoiceCode, productCode, validDate, quantity, noOfHours) "
+            String query = "INSERT INTO InvoiceProduct (InvoiceCode, ProductCode, BeginDate, NumberOfHours, NumberOfUnits) "
                     + "VALUES (?, ?, ?, ?, ?)";
 
             PreparedStatement ps = dam.prepareStatement(query, new Object[]{invoiceCode, productCode, validDate, quantity, noOfHours});
